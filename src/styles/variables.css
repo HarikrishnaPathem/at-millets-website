@@ -1,0 +1,45 @@
+/* ================================
+   BRAND COLOR SYSTEM
+================================ */
+
+/* Primary Brand Colors */
+:root {
+  --color-primary: #2f6b3f; /* Millet Green */
+  --color-primary-dark: #1f4d2c;
+  --color-secondary: #c8a24d; /* Grain Gold */
+  --color-accent: #8b5e34; /* Earth Brown */
+
+  /* Neutral Palette */
+  --color-dark: #0f172a; /* Deep slate */
+  --color-dark-soft: #1e293b;
+  --color-light: #f8fafc;
+  --color-light-soft: #eef2f7;
+  --color-muted: #64748b;
+
+  /* Status */
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+
+  /* Typography */
+  --font-primary: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  --font-heading: "Poppins", system-ui, sans-serif;
+
+  /* Spacing Scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 32px;
+  --space-xl: 64px;
+
+  /* Layout */
+  --container-width: 1200px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.4s ease;
+}
