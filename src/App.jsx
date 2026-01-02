@@ -1,11 +1,14 @@
 import AppRoutes from "./routes/AppRoutes";
 import MainLayout from "./components/layout/MainLayout";
+import { LanguageProvider } from "./i18n/LanguageContext";
 
 function App() {
   return (
-    <MainLayout>
-      <AppRoutes />
-    </MainLayout>
+    <LanguageProvider>
+      <MainLayout>
+        <AppRoutes />
+      </MainLayout>
+    </LanguageProvider>
   );
 }
 
