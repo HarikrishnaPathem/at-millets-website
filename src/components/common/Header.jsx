@@ -62,16 +62,16 @@ const Header = () => {
       icon: Package,
       label: t("nav.products"),
       items: [
-        { label: t("nav.allProducts"), path: "/products" },
-        { label: t("nav.recipes"), path: "/recipes" },
+        //{ label: t("nav.allProducts"), path: "/products" },
+        //{ label: t("nav.recipes"), path: "/recipes" },
       ],
     },
     business: {
       icon: Handshake,
       label: t("nav.business"),
       items: [
-        { label: t("nav.franchise"), path: "/franchise" },
-        { label: t("nav.contact"), path: "/contact" },
+        //{ label: t("nav.franchise"), path: "/franchise" },
+        //{ label: t("nav.contact"), path: "/contact" },
       ],
     },
   };
