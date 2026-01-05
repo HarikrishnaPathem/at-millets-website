@@ -54,7 +54,7 @@ const OriginSection = () => {
         >
           <span style={styles.eyebrow}>
             <span style={styles.dot}>●</span>
-            {t("origin.eyebrow")}
+            {t("home.origin.eyebrow")}
           </span>
 
           <h2
@@ -65,9 +65,11 @@ const OriginSection = () => {
                 : "clamp(2.4rem, 4vw, 3.6rem)",
             }}
           >
-            {t("origin.titleMain")}
+            {t("home.origin.titleMain")}
             <br />
-            <span style={styles.titleAccent}>{t("origin.titleAccent")}</span>
+            <span style={styles.titleAccent}>
+              {t("home.origin.titleAccent")}
+            </span>
           </h2>
 
           <p
@@ -76,25 +78,25 @@ const OriginSection = () => {
               fontSize: isMobile ? "0.95rem" : "1.05rem",
             }}
           >
-            {t("origin.description")}
+            {t("home.origin.description")}
           </p>
 
           <div style={{ ...styles.pillars, gap: isMobile ? 12 : 16 }}>
             {[
               {
                 icon: <Trees />,
-                title: t("origin.pillars.direct.title"),
-                desc: t("origin.pillars.direct.desc"),
+                title: t("home.origin.pillars.direct.title"),
+                desc: t("home.origin.pillars.direct.desc"),
               },
               {
                 icon: <HeartHandshake />,
-                title: t("origin.pillars.partnership.title"),
-                desc: t("origin.pillars.partnership.desc"),
+                title: t("home.origin.pillars.partnership.title"),
+                desc: t("home.origin.pillars.partnership.desc"),
               },
               {
                 icon: <Brain />,
-                title: t("origin.pillars.knowledge.title"),
-                desc: t("origin.pillars.knowledge.desc"),
+                title: t("home.origin.pillars.knowledge.title"),
+                desc: t("home.origin.pillars.knowledge.desc"),
               },
             ].map((pillar, i) => (
               <motion.div
@@ -123,7 +125,7 @@ const OriginSection = () => {
               padding: isMobile ? "8px 16px" : "10px 22px",
             }}
           >
-            {t("origin.badge")}
+            {t("home.origin.badge")}
           </div>
         </motion.div>
 

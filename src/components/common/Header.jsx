@@ -50,24 +50,33 @@ const Header = () => {
   const navigationData = {
     company: {
       icon: Building2,
-      label: t("company"),
+      label: t("nav.company"),
       items: [
-        t("about"),
-        t("sourcing"),
-        t("supply"),
-        t("packaging"),
-        t("quality"),
+        { label: t("nav.about"), path: "/about" },
+        { label: t("nav.sourcing"), path: "/sourcing" },
+        { label: t("nav.supply"), path: "/supply" },
+        { label: t("nav.packaging"), path: "/packaging" },
+        { label: t("nav.quality"), path: "/quality" },
       ],
     },
     products: {
       icon: Package,
-      label: t("products"),
-      items: [t("allProducts"), t("millets"), t("spices"), t("recipes")],
+      label: t("nav.products"),
+      items: [
+        { label: t("nav.allProducts"), path: "/products" },
+        { label: t("nav.millets"), path: "/millets" },
+        { label: t("nav.spices"), path: "/spices" },
+        { label: t("nav.recipes"), path: "/recipes" },
+      ],
     },
     business: {
       icon: Handshake,
-      label: t("business"),
-      items: [t("franchise"), t("bulk"), t("contact")],
+      label: t("nav.business"),
+      items: [
+        { label: t("nav.franchise"), path: "/franchise" },
+        { label: t("nav.bulk"), path: "/bulk" },
+        { label: t("nav.contact"), path: "/contact" },
+      ],
     },
   };
 
@@ -126,12 +135,12 @@ const Header = () => {
                         >
                           {data.items.map((item) => (
                             <motion.a
-                              key={item}
-                              href="#"
+                              key={item.label}
+                              href={item.path}
                               style={styles.dropdownLink}
                               whileHover={leafHover}
                             >
-                              <span>{item}</span>
+                              <span>{item.label}</span>
                               <ArrowRight size={14} />
                             </motion.a>
                           ))}
@@ -229,12 +238,12 @@ const Header = () => {
                           </div>
                           {section.items.map((item) => (
                             <a
-                              key={item}
-                              href="#"
+                              key={item.label}
+                              href={item.path}
                               style={styles.mobileLink}
                               onClick={() => setMobileOpen(false)}
                             >
-                              {item}
+                              {item.label}
                             </a>
                           ))}
                         </div>
@@ -252,7 +261,7 @@ const Header = () => {
                 style={styles.cta}
                 whileHover={{ scale: 1.04 }}
               >
-                {t("partner")}
+                {t("nav.partner")}
                 <ArrowRight size={16} />
               </motion.a>
             )}

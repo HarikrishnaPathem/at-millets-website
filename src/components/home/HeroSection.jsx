@@ -173,7 +173,7 @@ const ParticleBackground = () => {
 };
 
 /* =========================================================
-   DESKTOP HERO
+   DESKTOP home.hero
 ========================================================= */
 
 const DesktopHero = ({ t }) => {
@@ -191,7 +191,7 @@ const DesktopHero = ({ t }) => {
       >
         <span style={styles.eyebrow}>
           <span style={styles.eyebrowDot}>●</span>
-          {t("hero.eyebrow")}
+          {t("home.hero.eyebrow")}
         </span>
       </motion.div>
 
@@ -201,10 +201,10 @@ const DesktopHero = ({ t }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.8 }}
       >
-        {t("hero.titleMain")}
+        {t("home.hero.titleMain")}
         <br />
         <span style={styles.titleAccent}>
-          {t("hero.titleAccent")}
+          {t("home.hero.titleAccent")}
           <span style={styles.accentUnderline} />
         </span>
       </motion.h1>
@@ -215,7 +215,7 @@ const DesktopHero = ({ t }) => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.8 }}
       >
-        {t("hero.subtitle")}
+        {t("home.hero.subtitle")}
       </motion.p>
 
       <motion.div
@@ -224,9 +224,9 @@ const DesktopHero = ({ t }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.7, duration: 0.8 }}
       >
-        <Stat value="1000+" label={t("hero.stats.farmers")} delay={0} />
-        <Stat value="8" label={t("hero.stats.varieties")} delay={0.1} />
-        <Stat value="100%" label={t("hero.stats.organic")} delay={0.2} />
+        <Stat value="1000+" label={t("home.hero.stats.farmers")} delay={0} />
+        <Stat value="8" label={t("home.hero.stats.varieties")} delay={0.1} />
+        <Stat value="100%" label={t("home.hero.stats.organic")} delay={0.2} />
       </motion.div>
 
       <motion.div
@@ -235,9 +235,9 @@ const DesktopHero = ({ t }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.9, duration: 0.8 }}
       >
-        <Button size="lg">{t("hero.actions.explore")}</Button>
+        <Button size="lg">{t("home.hero.actions.explore")}</Button>
         <Button size="lg" variant="secondary">
-          {t("hero.actions.partner")}
+          {t("home.hero.actions.partner")}
         </Button>
       </motion.div>
     </motion.div>
@@ -245,7 +245,7 @@ const DesktopHero = ({ t }) => {
 };
 
 /* =========================================================
-   MOBILE HERO
+   MOBILE home.hero
 ========================================================= */
 
 const MobileHero = ({ t }) => {
@@ -267,7 +267,7 @@ const MobileHero = ({ t }) => {
         transition={{ delay: 0.2, duration: 0.6 }}
       >
         <span style={styles.eyebrowDot}>●</span>
-        {t("hero.eyebrow")}
+        {t("home.hero.eyebrow")}
       </motion.span>
 
       <motion.h1
@@ -276,9 +276,9 @@ const MobileHero = ({ t }) => {
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: 0.3, duration: 0.7 }}
       >
-        {t("hero.titleMain")}
+        {t("home.hero.titleMain")}
         <br />
-        <span style={styles.titleAccent}>{t("hero.titleAccent")}</span>
+        <span style={styles.titleAccent}>{t("home.hero.titleAccent")}</span>
       </motion.h1>
 
       <motion.p
@@ -287,7 +287,7 @@ const MobileHero = ({ t }) => {
         animate={inView ? { opacity: 1 } : {}}
         transition={{ delay: 0.5, duration: 0.7 }}
       >
-        {t("hero.subtitle")}
+        {t("home.hero.subtitle")}
       </motion.p>
 
       <motion.div
@@ -296,9 +296,9 @@ const MobileHero = ({ t }) => {
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: 0.6, duration: 0.7 }}
       >
-        <MobileStat value="1000+" label={t("hero.stats.farmers")} />
-        <MobileStat value="8" label={t("hero.stats.varieties")} />
-        <MobileStat value="100%" label={t("hero.stats.organic")} />
+        <MobileStat value="1000+" label={t("home.hero.stats.farmers")} />
+        <MobileStat value="8" label={t("home.hero.stats.varieties")} />
+        <MobileStat value="100%" label={t("home.hero.stats.organic")} />
       </motion.div>
 
       <motion.div
@@ -307,9 +307,9 @@ const MobileHero = ({ t }) => {
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: 0.8, duration: 0.7 }}
       >
-        <Button fullWidth>{t("hero.actions.explore")}</Button>
+        <Button fullWidth>{t("home.hero.actions.explore")}</Button>
         <Button fullWidth variant="secondary">
-          {t("hero.actions.partner")}
+          {t("home.hero.actions.partner")}
         </Button>
       </motion.div>
     </motion.div>

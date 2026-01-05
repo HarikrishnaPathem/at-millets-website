@@ -1,9 +1,17 @@
+import React from "react";
+import CompanyBackgroundSection from "../../components/about/CompanyBackgroundSection";
+import VisionMissionSection from "../../components/about/VisionMissionSection";
+import WhyArakuMilletsSection from "../../components/about/WhyArakuMilletsSection";
+import CommitmentSustainabilitySection from "../../components/about/CommitmentSustainabilitySection";
+
 const About = () => {
   return (
-    <section>
-      <h2>About Us</h2>
-      <p>Company story, vision, and mission.</p>
-    </section>
+    <div>
+      <CompanyBackgroundSection />
+      <VisionMissionSection />
+      <WhyArakuMilletsSection />
+      <CommitmentSustainabilitySection />
+    </div>
   );
 };
 

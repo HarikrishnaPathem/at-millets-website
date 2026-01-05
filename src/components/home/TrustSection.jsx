@@ -12,32 +12,32 @@ const TrustSection = () => {
   const pillars = [
     {
       icon: <Leaf />,
-      title: t("trust.items.organic.title"),
-      text: t("trust.items.organic.text"),
+      title: t("home.trust.items.organic.title"),
+      text: t("home.trust.items.organic.text"),
     },
     {
       icon: <Microscope />,
-      title: t("trust.items.testing.title"),
-      text: t("trust.items.testing.text"),
+      title: t("home.trust.items.testing.title"),
+      text: t("home.trust.items.testing.text"),
     },
     {
       icon: <Handshake />,
-      title: t("trust.items.fair.title"),
-      text: t("trust.items.fair.text"),
+      title: t("home.trust.items.fair.title"),
+      text: t("home.trust.items.fair.text"),
     },
     {
       icon: <ShieldCheck />,
-      title: t("trust.items.compliance.title"),
-      text: t("trust.items.compliance.text"),
+      title: t("home.trust.items.compliance.title"),
+      text: t("home.trust.items.compliance.text"),
     },
   ];
 
   const certifications = [
-    { key: "fssai", label: t("trust.badges.fssai") },
-    { key: "organic", label: t("trust.badges.organic") },
-    { key: "lab", label: t("trust.badges.lab") },
-    { key: "gmp", label: t("trust.badges.gmp") },
-    { key: "trace", label: t("trust.badges.trace") },
+    { key: "fssai", label: t("home.trust.badges.fssai") },
+    { key: "organic", label: t("home.trust.badges.organic") },
+    { key: "lab", label: t("home.trust.badges.lab") },
+    { key: "gmp", label: t("home.trust.badges.gmp") },
+    { key: "trace", label: t("home.trust.badges.trace") },
   ];
 
   return (
@@ -55,16 +55,18 @@ const TrustSection = () => {
         >
           <span style={styles.eyebrow}>
             <span style={styles.dot}>●</span>
-            {t("trust.eyebrow")}
+            {t("home.trust.eyebrow")}
           </span>
 
           <h2 style={styles.title}>
-            {t("trust.title")}
+            {t("home.trust.title")}
             <br />
-            <span style={styles.titleAccent}>{t("trust.titleAccent")}</span>
+            <span style={styles.titleAccent}>
+              {t("home.trust.titleAccent")}
+            </span>
           </h2>
 
-          <p style={styles.subtitle}>{t("trust.subtitle")}</p>
+          <p style={styles.subtitle}>{t("home.trust.subtitle")}</p>
         </motion.div>
 
         {/* TRUST PILLARS */}
@@ -97,7 +99,7 @@ const TrustSection = () => {
           transition={{ delay: 0.4, duration: 0.8 }}
           style={styles.badgeSection}
         >
-          <p style={styles.badgeTitle}>{t("trust.badges.title")}</p>
+          <p style={styles.badgeTitle}>{t("home.trust.badges.title")}</p>
 
           <div style={styles.badgeRow}>
             {certifications.map((badge, i) => (
@@ -127,7 +129,7 @@ const TrustSection = () => {
           transition={{ delay: 0.6, duration: 0.7 }}
           style={styles.footer}
         >
-          {t("trust.footer")}
+          {t("home.trust.footer")}
         </motion.div>
       </div>
     </section>

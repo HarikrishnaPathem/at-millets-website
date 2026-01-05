@@ -34,29 +34,29 @@ const ValuesSection = () => {
     {
       id: "integrity",
       icon: <LuHeartHandshake size={isMobile ? 28 : 32} />,
-      title: t("values.integrity.title"),
-      desc: t("values.integrity.desc"),
+      title: t("home.values.integrity.title"),
+      desc: t("home.values.integrity.desc"),
       gradient: "linear-gradient(135deg, #3c8b65, #2d7a54)",
     },
     {
       id: "land",
       icon: <PiPottedPlant size={isMobile ? 28 : 32} />,
-      title: t("values.land.title"),
-      desc: t("values.land.desc"),
+      title: t("home.values.land.title"),
+      desc: t("home.values.land.desc"),
       gradient: "linear-gradient(135deg, #78c29a, #5fb584)",
     },
     {
       id: "purity",
       icon: <BsStars size={isMobile ? 28 : 32} />,
-      title: t("values.purity.title"),
-      desc: t("values.purity.desc"),
+      title: t("home.values.purity.title"),
+      desc: t("home.values.purity.desc"),
       gradient: "linear-gradient(135deg, #4ea875, #3c8b65)",
     },
     {
       id: "growth",
       icon: <GiEarthAsiaOceania size={isMobile ? 28 : 32} />,
-      title: t("values.growth.title"),
-      desc: t("values.growth.desc"),
+      title: t("home.values.growth.title"),
+      desc: t("home.values.growth.desc"),
       gradient: "linear-gradient(135deg, #5fb584, #4ea875)",
     },
   ];
@@ -98,7 +98,7 @@ const ValuesSection = () => {
               animate={{ scale: [1, 1.3, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
-            {t("values.eyebrow")}
+            {t("home.values.eyebrow")}
           </motion.span>
 
           <h2
@@ -107,10 +107,10 @@ const ValuesSection = () => {
               fontSize: isMobile ? "2.2rem" : isTablet ? "3rem" : "4.5rem",
             }}
           >
-            {t("values.titleMain")}
+            {t("home.values.titleMain")}
             <br />
             <span style={styles.titleAccent}>
-              {t("values.titleAccent")}
+              {t("home.values.titleAccent")}
               <motion.div
                 style={styles.titleUnderline}
                 initial={{ scaleX: 0 }}
@@ -127,7 +127,7 @@ const ValuesSection = () => {
               fontSize: isMobile ? "1rem" : "1.15rem",
             }}
           >
-            {t("values.subtitle")}
+            {t("home.values.subtitle")}
           </p>
         </motion.div>
 
@@ -203,7 +203,7 @@ const ValuesSection = () => {
               fontSize: isMobile ? "1.05rem" : "1.2rem",
             }}
           >
-            {t("values.closing")}
+            {t("home.values.closing")}
           </p>
 
           <motion.div
@@ -215,7 +215,7 @@ const ValuesSection = () => {
             whileHover={isMobile ? {} : { scale: 1.05, y: -4 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            {t("values.badge")}
+            {t("home.values.badge")}
           </motion.div>
         </motion.div>
       </div>

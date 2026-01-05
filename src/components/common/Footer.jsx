@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
+/* =========================================================
+   RESPONSIVE FOOTER – WHITE & GREEN PREMIUM THEME
+========================================================= */
+
 const Footer = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
@@ -12,7 +16,6 @@ const Footer = () => {
       setIsMobile(width <= 767);
       setIsTablet(width > 767 && width <= 1023);
     };
-
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -20,6 +23,9 @@ const Footer = () => {
 
   return (
     <footer style={styles.footer}>
+      {/* soft green background texture */}
+      <div style={styles.bgPattern} />
+
       <div
         style={{
           ...styles.container,
@@ -28,20 +34,19 @@ const Footer = () => {
             : isTablet
             ? "1fr 1fr"
             : "1.4fr 2fr 1.2fr",
-          gap: isMobile ? "40px" : "48px",
+          gap: isMobile ? 40 : 56,
           textAlign: isMobile ? "center" : "left",
         }}
       >
-        {/* Brand */}
+        {/* BRAND */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
           style={{
             ...styles.brandSection,
-            maxWidth: isMobile ? "100%" : "420px",
-            margin: isMobile ? "0 auto" : "0",
+            margin: isMobile ? "0 auto" : 0,
           }}
         >
           <div
@@ -55,25 +60,22 @@ const Footer = () => {
           </div>
 
           <p style={styles.brandDescription}>
-            Premium millets, spices, and natural foods sourced directly from
-            tribal farmers of Araku Valley.
+            Premium millets and natural foods sourced responsibly from tribal
+            farmers of Araku Valley.
           </p>
 
-          <p style={styles.brandTagline}>
-            Rooted in tradition. Crafted for today.
-          </p>
+          <p style={styles.brandTagline}>Rooted in Nature • Built on Trust</p>
         </motion.div>
 
-        {/* Links */}
+        {/* LINKS */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.1, duration: 0.6 }}
+          transition={{ delay: 0.1, duration: 0.7 }}
           style={{
             ...styles.linksSection,
             gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
-            gap: isMobile ? "28px" : "32px",
           }}
         >
           <FooterColumn
@@ -82,7 +84,7 @@ const Footer = () => {
               ["About Us", "/about"],
               ["Tribal Sourcing", "/sourcing"],
               ["Supply Chain", "/supply-chain"],
-              ["Packaging", "/packaging-distribution"],
+              ["Packaging", "/packaging"],
               ["Quality Standards", "/quality"],
             ]}
             center={isMobile}
@@ -110,12 +112,12 @@ const Footer = () => {
           />
         </motion.div>
 
-        {/* Contact */}
+        {/* CONTACT */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.6 }}
+          transition={{ delay: 0.2, duration: 0.7 }}
           style={{
             ...styles.contactSection,
             textAlign: isMobile ? "center" : "left",
@@ -127,29 +129,23 @@ const Footer = () => {
           <p style={styles.contactItem}>📞 +91 XXXXX XXXXX</p>
           <p style={styles.contactItem}>✉️ info@atmillets.com</p>
 
-          <div style={{ marginTop: "20px" }}>
-            <Link
-              to="/franchise"
-              style={{
-                ...styles.footerCta,
-                display: "block",
-                width: isMobile ? "100%" : "fit-content",
-                margin: isMobile ? "0 auto" : "0",
-                textAlign: "center",
-              }}
-            >
-              Become a Franchise Partner →
-            </Link>
-          </div>
+          <Link
+            to="/franchise"
+            style={{
+              ...styles.footerCta,
+              margin: isMobile ? "18px auto 0" : "18px 0 0",
+            }}
+          >
+            Become a Franchise Partner →
+          </Link>
         </motion.div>
       </div>
 
-      {/* Bottom Bar */}
+      {/* BOTTOM BAR */}
       <div
         style={{
           ...styles.bottomBar,
           flexDirection: isMobile ? "column" : "row",
-          gap: isMobile ? "6px" : "8px",
         }}
       >
         <span>
@@ -174,15 +170,9 @@ const FooterColumn = ({ title, links, center }) => (
         <motion.li
           key={path}
           whileHover={{ x: center ? 0 : 6 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          transition={{ type: "spring", stiffness: 300, damping: 22 }}
         >
-          <Link
-            to={path}
-            style={{
-              ...styles.footerLink,
-              display: "inline-block",
-            }}
-          >
+          <Link to={path} style={styles.footerLink}>
             {label}
           </Link>
         </motion.li>
@@ -191,112 +181,140 @@ const FooterColumn = ({ title, links, center }) => (
   </div>
 );
 
-/* ================== PREMIUM STYLES ================== */
+/* =========================================================
+   STYLES – WHITE & GREEN PREMIUM
+========================================================= */
 
 const styles = {
   footer: {
+    position: "relative",
+    background: "linear-gradient(180deg,#ffffff 0%,#f9fdfb 55%,#f2faf6 100%)",
+    borderTop: "1px solid rgba(60,139,101,0.15)",
+    overflow: "hidden",
+  },
+
+  bgPattern: {
+    position: "absolute",
+    inset: 0,
     background:
-      "linear-gradient(180deg, #fffaf0 0%, #f6efe6 60%, #efe4d6 100%)",
-    borderTop: "1px solid rgba(139,94,52,0.15)",
-    marginTop: "0",
+      "radial-gradient(circle at 20% 20%, rgba(120,194,154,0.12), transparent 45%), radial-gradient(circle at 80% 80%, rgba(60,139,101,0.1), transparent 45%)",
+    pointerEvents: "none",
   },
+
   container: {
-    maxWidth: "1280px",
+    position: "relative",
+    maxWidth: 1280,
     margin: "0 auto",
-    padding: "72px 32px 56px",
+    padding: "80px 32px 60px",
     display: "grid",
-    gridTemplateColumns: "1.4fr 2fr 1.2fr",
-    gap: "48px",
+    zIndex: 1,
   },
+
+  /* BRAND */
   brandSection: {
-    maxWidth: "420px",
+    maxWidth: 420,
   },
+
   brandHeader: {
     display: "flex",
     alignItems: "center",
-    gap: "10px",
-    marginBottom: "16px",
+    gap: 12,
+    marginBottom: 18,
   },
+
   brandIcon: {
-    fontSize: "1.8rem",
+    fontSize: "1.9rem",
   },
+
   brandName: {
     fontSize: "1.6rem",
-    fontWeight: 800,
-    background: "linear-gradient(135deg, #8b5e34, #6b4f2c)",
+    fontWeight: 900,
+    background: "linear-gradient(135deg,#2d7a54,#3c8b65,#78c29a)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
   },
+
   brandDescription: {
     fontSize: "0.95rem",
     lineHeight: 1.7,
-    color: "#4a3724",
-    marginBottom: "12px",
+    color: "#3f5f4f",
+    marginBottom: 14,
   },
+
   brandTagline: {
-    fontSize: "0.8rem",
-    fontWeight: 600,
-    letterSpacing: "0.8px",
+    fontSize: "0.75rem",
+    fontWeight: 700,
+    letterSpacing: "0.14em",
     textTransform: "uppercase",
-    color: "#8b5e34",
+    color: "#3c8b65",
   },
+
+  /* LINKS */
   linksSection: {
     display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)",
-    gap: "32px",
+    gap: 36,
   },
-  footerColumn: {},
+
   columnTitle: {
-    fontSize: "0.95rem",
-    fontWeight: 700,
-    marginBottom: "16px",
-    color: "#3f2f1c",
-    letterSpacing: "0.4px",
+    fontSize: "0.9rem",
+    fontWeight: 800,
+    marginBottom: 18,
+    color: "#0d2817",
+    letterSpacing: "0.04em",
+    textTransform: "uppercase",
   },
+
   linkList: {
     listStyle: "none",
     padding: 0,
     margin: 0,
   },
+
   footerLink: {
     fontSize: "0.9rem",
-    color: "#5a4632",
+    color: "#4f6f5f",
     textDecoration: "none",
-    display: "inline-block",
     padding: "6px 0",
+    display: "inline-block",
+    transition: "color 0.2s ease",
   },
+
+  /* CONTACT */
   contactSection: {},
+
   contactItem: {
     fontSize: "0.9rem",
-    color: "#4a3724",
-    marginBottom: "10px",
+    color: "#3f5f4f",
+    marginBottom: 10,
   },
-  footerCtaWrapper: {
-    marginTop: "20px",
-  },
+
   footerCta: {
     display: "inline-block",
-    background: "linear-gradient(135deg, #8b5e34, #6b4f2c)",
-    color: "#fffdf8",
-    padding: "14px 22px",
-    borderRadius: "14px",
+    padding: "14px 24px",
+    background: "linear-gradient(135deg,#3c8b65,#2d7a54)",
+    color: "#ffffff",
+    borderRadius: 14,
     fontSize: "0.9rem",
     fontWeight: 700,
     textDecoration: "none",
-    boxShadow: "0 10px 28px rgba(139,94,52,0.35)",
+    boxShadow: "0 10px 30px rgba(60,139,101,0.35)",
+    transition: "transform 0.25s ease",
   },
+
+  /* BOTTOM BAR */
   bottomBar: {
-    borderTop: "1px solid rgba(139,94,52,0.2)",
+    borderTop: "1px solid rgba(60,139,101,0.18)",
     padding: "18px 24px",
-    textAlign: "center",
     fontSize: "0.8rem",
-    color: "#6b4f2c",
+    color: "#5f8f75",
     display: "flex",
     justifyContent: "center",
-    gap: "8px",
+    alignItems: "center",
+    gap: 8,
     flexWrap: "wrap",
   },
+
   bottomDivider: {
-    opacity: 0.5,
+    opacity: 0.6,
   },
 };

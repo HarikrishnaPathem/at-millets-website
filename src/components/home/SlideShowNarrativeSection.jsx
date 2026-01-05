@@ -39,13 +39,15 @@ const SlideshowNarrativeSection = () => {
         <div style={styles.header}>
           <span style={styles.eyebrow}>
             <span style={styles.dot}>●</span>
-            {t("narrative.eyebrow")}
+            {t("home.narrative.eyebrow")}
           </span>
 
           <h2 style={styles.title}>
-            {t("narrative.title")}
+            {t("home.narrative.title")}
             <br />
-            <span style={styles.titleAccent}>{t("narrative.titleAccent")}</span>
+            <span style={styles.titleAccent}>
+              {t("home.narrative.titleAccent")}
+            </span>
           </h2>
         </div>
 
@@ -63,15 +65,15 @@ const SlideshowNarrativeSection = () => {
               {/* LEFT */}
               <div style={styles.textBlock}>
                 <span style={styles.step}>
-                  {t(`narrative.slides.${SLIDES[active].key}.step`)}
+                  {t(`home.narrative.slides.${SLIDES[active].key}.step`)}
                 </span>
 
                 <h3 style={styles.slideTitle}>
-                  {t(`narrative.slides.${SLIDES[active].key}.title`)}
+                  {t(`home.narrative.slides.${SLIDES[active].key}.title`)}
                 </h3>
 
                 <p style={styles.slideText}>
-                  {t(`narrative.slides.${SLIDES[active].key}.text`)}
+                  {t(`home.narrative.slides.${SLIDES[active].key}.text`)}
                 </p>
               </div>
 
@@ -88,7 +90,7 @@ const SlideshowNarrativeSection = () => {
                 />
                 <div style={styles.visualInner}>
                   <span style={styles.visualLabel}>
-                    {t(`narrative.slides.${SLIDES[active].key}.label`)}
+                    {t(`home.narrative.slides.${SLIDES[active].key}.label`)}
                   </span>
                 </div>
               </div>
