@@ -1,9 +1,17 @@
+import BusinessHero from "../../components/franchise/BusinessHero";
+import WhyPartner from "../../components/franchise/WhyPartner";
+import StorePreview from "../../components/franchise/StorePreview";
+import RegionalContacts from "../../components/franchise/RegionalContacts";
+import React from "react";
+
 const Franchise = () => {
   return (
-    <section>
-      <h2>Franchise Opportunity</h2>
-      <p>Franchise model and partnership details.</p>
-    </section>
+    <div>
+      <BusinessHero />
+      <WhyPartner />
+      <StorePreview />
+      <RegionalContacts />
+    </div>
   );
 };
 

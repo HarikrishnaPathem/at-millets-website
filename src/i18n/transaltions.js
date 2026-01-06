@@ -1,5 +1,7 @@
 // src/i18n/translations.js
 
+import { products } from "../data/products";
+
 export const translations = {
   EN: {
     /* ===== HEADER (UNCHANGED) ===== */
@@ -500,6 +502,155 @@ export const translations = {
         consistency: {
           title: "Consistent Output",
           text: "Standardized methods ensure uniform quality across regions and seasons.",
+        },
+      },
+    },
+    products: {
+      page: {
+        title: "Our Products",
+        subtitle:
+          "Authentic millets, pulses, spices, and natural foods sourced directly from tribal farmers.",
+      },
+      empty: {
+        title: "No Products Found",
+        subtitle:
+          "Try adjusting your filters or explore other categories to find what you're looking for.",
+        reset: "Clear Filters",
+      },
+      search: {
+        placeholder: "Search products, categories...",
+        clear: "Clear search",
+      },
+      filters: {
+        filter: "Filters",
+        all: "All Products",
+        category: "Category",
+        packSize: "Pack Size",
+        type: "Product Type",
+
+        "millets-grains": "Millets & Grains",
+        "pulses-legumes": "Pulses & Legumes",
+        "spices-essentials": "Spices & Essentials",
+        "instant-mixes": "Instant Mixes",
+        snacks: "Snacks",
+        "health-products": "Health Products",
+        "natural-products": "Natural Products",
+      },
+      types: {
+        raw: "Raw Grain",
+        flour: "Flour / Powder",
+        readyToCook: "Ready to Cook",
+        readyToEat: "Ready to Eat",
+      },
+      productsFound: "Products Found",
+      card: {
+        viewDetails: "View Details →",
+        explore: "Explore →",
+      },
+      nutrition: {
+        title: "Nutrition Facts",
+        serving: "Serving Size: 100g",
+        note: "Percent Daily Values are based on a 2,000 calorie diet.",
+      },
+      details: {
+        description: "Description",
+        nutrition: "Nutrition Information",
+        benefits: "Health Benefits",
+        sourcing: "Sourcing Information",
+        processing: "Processing Details",
+        additional: "Additional Information",
+        shelfLife: "Shelf Life",
+        storage: "Storage Instructions",
+        packSizes: "Available Pack Sizes",
+        certifications: "Certifications",
+        notFound: "Product not found",
+        back: "Back to Products",
+      },
+    },
+    business: {
+      hero: {
+        eyebrow: "Business Opportunity",
+        titleMain: "Partner in a",
+        titleAccent: "Proven Natural Food Model",
+        subtitle:
+          "We offer a structured business opportunity built on trust, demand, and ethically sourced natural products.",
+
+        highlights: [
+          "Farm Fresh & Natural Products",
+          "Ethically Sourced from Araku",
+          "Millet-Based & Health-Focused",
+        ],
+
+        description:
+          "Become an entrepreneur by partnering with AT Millets. Our business model combines traditional wisdom, strong brand presence, and consistent product demand to help you build a sustainable and rewarding venture across Telangana, Andhra Pradesh, and Rayalaseema.",
+      },
+
+      why: {
+        eyebrow: "Why Partner With Us",
+        title: "A Brand Built on Trust & Demand",
+
+        points: [
+          "Trusted and growing natural food brand",
+          "Direct sourcing from Araku tribal farmers",
+          "High and consistent market demand",
+          "Attractive and sustainable margins",
+          "Defined regional business support",
+          "Reliable product supply and logistics",
+        ],
+      },
+
+      whatYouGet: {
+        eyebrow: "What You Get",
+        title: "Complete Business Support",
+
+        points: [
+          "Store setup guidance & branding support",
+          "Continuous product supply",
+          "Marketing and promotional assistance",
+          "Professional staff training",
+          "24/7 operational & technical support",
+          "Ongoing business guidance",
+        ],
+      },
+
+      store: {
+        eyebrow: "Retail Experience",
+        title: "A Store That Reflects Quality & Trust",
+        description:
+          "Our store format is designed to deliver a premium yet approachable retail experience, reflecting purity, authenticity, and trust — the core values of AT Millets.",
+      },
+
+      earnings: {
+        eyebrow: "Earning Potential",
+        title: "A Sustainable Income Opportunity",
+        note: "Earnings depend on location, operations, and market conditions. Our partners benefit from a model designed for steady and long-term growth.",
+      },
+
+      contacts: {
+        title: "For Business Enquiry",
+
+        regions: {
+          telangana: {
+            title: "Telangana",
+            people: [
+              "Krishna Urugonda – 9885558222",
+              "Kavitha Gandhi – 8897265146",
+              "Raghuram Nama – 9989087740",
+            ],
+          },
+
+          rayalaseema: {
+            title: "Rayalaseema",
+            people: ["Balla Raghavendra – 8686202093", "Gopal – 9346508834"],
+          },
+
+          andhra: {
+            title: "Andhra Pradesh",
+            people: [
+              "Amara Mohan – 9652152467",
+              "MD Ismail Sayyad – 9542252286",
+            ],
+          },
         },
       },
     },
@@ -1004,6 +1155,155 @@ export const translations = {
         },
       },
     },
+    products: {
+      page: {
+        title: "మా ఉత్పత్తులు",
+        subtitle:
+          "గిరిజన రైతుల నుండి నేరుగా సేకరించిన మిల్లెట్లు, పప్పులు, మసాలాలు మరియు సహజ ఆహారాలు.",
+      },
+      empty: {
+        title: "ఉత్పత్తులు కనబడలేదు",
+        subtitle: "దయచేసి ఫిల్టర్లు మార్చండి లేదా ఇతర విభాగాలను చూడండి.",
+        reset: "ఫిల్టర్లు తొలగించండి",
+      },
+      search: {
+        placeholder: "ఉత్పత్తులు లేదా విభాగాలను వెతకండి...",
+        clear: "శోధన తొలగించండి",
+      },
+      nutrition: {
+        title: "పోషక విలువలు",
+        serving: "సర్వింగ్ పరిమాణం: 100 గ్రాములు",
+        note: "రోజువారీ అవసరాల ఆధారంగా విలువలు మారవచ్చు.",
+      },
+      filters: {
+        filter: "ఫిల్టర్లు",
+        all: "అన్ని ఉత్పత్తులు",
+        category: "వర్గం",
+        packSize: "ప్యాక్ పరిమాణం",
+        type: "ఉత్పత్తి రకం",
+
+        "millets-grains": "మిల్లెట్లు & ధాన్యాలు",
+        "pulses-legumes": "పప్పులు & పప్పుధాన్యాలు",
+        "spices-essentials": "మసాలాలు & అవసరాలు",
+        "instant-mixes": "తక్షణ వంట మిశ్రమాలు",
+        snacks: "స్నాక్స్",
+        "health-products": "ఆరోగ్య ఉత్పత్తులు",
+        "natural-products": "సహజ ఉత్పత్తులు",
+      },
+      productsFound: "ఉత్పత్తులు కనుగొనబడ్డాయి",
+      types: {
+        raw: "ముడి ధాన్యం",
+        flour: "పిండి / పొడి",
+        readyToCook: "వండేందుకు సిద్ధం",
+        readyToEat: "తినేందుకు సిద్ధం",
+      },
+
+      card: {
+        viewDetails: "వివరాలు చూడండి →",
+        explore: "చూడండి →",
+      },
+      details: {
+        description: "వివరణ",
+        nutrition: "పోషక సమాచారం",
+        benefits: "ఆరోగ్య ప్రయోజనాలు",
+        sourcing: "సేకరణ వివరాలు",
+        processing: "ప్రాసెసింగ్ విధానం",
+        additional: "ఇతర సమాచారం",
+        shelfLife: "షెల్ఫ్ లైఫ్",
+        storage: "నిల్వ విధానం",
+        packSizes: "లభ్యమయ్యే ప్యాక్ పరిమాణాలు",
+        certifications: "సర్టిఫికేషన్లు",
+        notFound: "ఉత్పత్తి కనబడలేదు",
+        back: "ఉత్పత్తులకు తిరిగి వెళ్ళండి",
+      },
+    },
+    business: {
+      hero: {
+        eyebrow: "వ్యాపార అవకాశం",
+        titleMain: "నమ్మకంపై నిర్మితమైన",
+        titleAccent: "వ్యాపార భాగస్వామ్యం",
+        subtitle:
+          "సహజ ఆహార ఉత్పత్తులపై ఆధారపడిన, నమ్మకమైన మరియు డిమాండ్ ఉన్న వ్యాపార అవకాశాన్ని మేము అందిస్తున్నాము.",
+
+        highlights: [
+          "తాజా మరియు సహజ ఉత్పత్తులు",
+          "అరకు నుండి నైతికంగా సేకరణ",
+          "మిల్లెట్ ఆధారిత ఆరోగ్య ఉత్పత్తులు",
+        ],
+
+        description:
+          "AT మిల్లెట్స్‌తో భాగస్వామిగా మారి ఒక స్థిరమైన వ్యాపారాన్ని నిర్మించండి. తెలంగాణ, ఆంధ్రప్రదేశ్ మరియు రాయలసీమ ప్రాంతాల్లో అభివృద్ధి చెందుతున్న వ్యాపార మోడల్ ఇది.",
+      },
+
+      why: {
+        eyebrow: "మాతో ఎందుకు భాగస్వామ్యం కావాలి",
+        title: "నమ్మకం & డిమాండ్‌తో కూడిన బ్రాండ్",
+
+        points: [
+          "నమ్మకమైన సహజ ఆహార బ్రాండ్",
+          "అరకు గిరిజన రైతుల నుండి నేరుగా సేకరణ",
+          "ఎక్కువ మరియు నిరంతర మార్కెట్ డిమాండ్",
+          "స్థిరమైన మరియు ఆకర్షణీయ లాభాలు",
+          "ప్రాంతాల వారీగా వ్యాపార మద్దతు",
+          "నిరంతర ఉత్పత్తి సరఫరా",
+        ],
+      },
+
+      whatYouGet: {
+        eyebrow: "మీకు లభించేది",
+        title: "పూర్తి వ్యాపార మద్దతు",
+
+        points: [
+          "స్టోర్ సెటప్ & బ్రాండింగ్ మార్గదర్శనం",
+          "నిరంతర ఉత్పత్తి సరఫరా",
+          "మార్కెటింగ్ మరియు ప్రమోషన్ మద్దతు",
+          "సిబ్బంది శిక్షణ",
+          "24/7 సాంకేతిక మరియు ఆపరేషనల్ మద్దతు",
+          "నిరంతర వ్యాపార మార్గదర్శనం",
+        ],
+      },
+
+      store: {
+        eyebrow: "రిటైల్ అనుభవం",
+        title: "నాణ్యతను ప్రతిబింబించే స్టోర్",
+        description:
+          "AT మిల్లెట్స్ స్టోర్లు నాణ్యత, స్వచ్ఛత మరియు విశ్వాసాన్ని ప్రతిబింబించేలా రూపకల్పన చేయబడ్డాయి.",
+      },
+
+      earnings: {
+        eyebrow: "ఆదాయ అవకాశాలు",
+        title: "స్థిరమైన ఆదాయ మార్గం",
+        note: "ఆదాయం ప్రదేశం, నిర్వహణ మరియు మార్కెట్ పరిస్థితులపై ఆధారపడి ఉంటుంది.",
+      },
+
+      contacts: {
+        title: "వ్యాపార విచారణ కోసం",
+
+        regions: {
+          telangana: {
+            title: "తెలంగాణ",
+            people: [
+              "కృష్ణ ఉరుగొండ – 9885558222",
+              "కవిత గాంధీ – 8897265146",
+              "రఘురామ్ నామ – 9989087740",
+            ],
+          },
+
+          rayalaseema: {
+            title: "రాయలసీమ",
+            people: ["బళ్ల రాఘవేంద్ర – 8686202093", "గోపాల్ – 9346508834"],
+          },
+
+          andhra: {
+            title: "ఆంధ్రప్రదేశ్",
+            people: [
+              "అమర మోహన్ – 9652152467",
+              "MD ఇస్మాయిల్ సయ్యద్ – 9542252286",
+            ],
+          },
+        },
+      },
+    },
   },
 
   HI: {
@@ -1502,6 +1802,155 @@ export const translations = {
         consistency: {
           title: "समान गुणवत्ता",
           text: "हर क्षेत्र और मौसम में एक समान आउटपुट।",
+        },
+      },
+    },
+    products: {
+      page: {
+        title: "हमारे उत्पाद",
+        subtitle:
+          "जनजातीय किसानों से सीधे प्राप्त मिलेट्स, दालें, मसाले और प्राकृतिक खाद्य उत्पाद।",
+      },
+      empty: {
+        title: "कोई उत्पाद नहीं मिला",
+        subtitle: "कृपया फ़िल्टर बदलें या अन्य श्रेणियाँ देखें।",
+        reset: "फ़िल्टर हटाएँ",
+      },
+      search: {
+        placeholder: "उत्पाद या श्रेणी खोजें...",
+        clear: "खोज हटाएँ",
+      },
+      nutrition: {
+        title: "पोषण तथ्य",
+        serving: "सर्विंग साइज: 100 ग्राम",
+        note: "दैनिक पोषण आवश्यकता के अनुसार मान बदल सकते हैं।",
+      },
+      filters: {
+        filter: "फ़िल्टर",
+        all: "सभी उत्पाद",
+        category: "श्रेणी",
+        packSize: "पैक का आकार",
+        type: "उत्पाद प्रकार",
+
+        "millets-grains": "मिलेट्स और अनाज",
+        "pulses-legumes": "दालें और फलियां",
+        "spices-essentials": "मसाले और आवश्यक वस्तुएँ",
+        "instant-mixes": "इंस्टेंट मिक्स",
+        snacks: "स्नैक्स",
+        "health-products": "स्वास्थ्य उत्पाद",
+        "natural-products": "प्राकृतिक उत्पाद",
+      },
+      productsFound: "उत्पाद मिले",
+      types: {
+        raw: "कच्चा अनाज",
+        flour: "आटा / पाउडर",
+        readyToCook: "पकाने के लिए तैयार",
+        readyToEat: "खाने के लिए तैयार",
+      },
+
+      card: {
+        viewDetails: "विवरण देखें →",
+        explore: "देखें →",
+      },
+      details: {
+        description: "विवरण",
+        nutrition: "पोषण जानकारी",
+        benefits: "स्वास्थ्य लाभ",
+        sourcing: "स्रोत विवरण",
+        processing: "प्रसंस्करण विवरण",
+        additional: "अतिरिक्त जानकारी",
+        shelfLife: "शेल्फ लाइफ",
+        storage: "भंडारण निर्देश",
+        packSizes: "उपलब्ध पैक आकार",
+        certifications: "प्रमाणपत्र",
+        notFound: "उत्पाद नहीं मिला",
+        back: "उत्पादों पर वापस जाएं",
+      },
+    },
+    business: {
+      hero: {
+        eyebrow: "व्यवसाय का अवसर",
+        titleMain: "विश्वास पर आधारित",
+        titleAccent: "व्यावसायिक साझेदारी",
+        subtitle:
+          "प्राकृतिक खाद्य उत्पादों पर आधारित एक मजबूत और भरोसेमंद व्यवसाय मॉडल।",
+
+        highlights: [
+          "ताजे और प्राकृतिक उत्पाद",
+          "अराकू से नैतिक सोर्सिंग",
+          "मिलेट आधारित स्वास्थ्य उत्पाद",
+        ],
+
+        description:
+          "AT Millets के साथ जुड़कर एक स्थायी और भरोसेमंद व्यवसाय बनाएं। यह अवसर तेलंगाना, आंध्र प्रदेश और रायलसीमा में उपलब्ध है।",
+      },
+
+      why: {
+        eyebrow: "हमारे साथ क्यों जुड़ें",
+        title: "विश्वास और मांग पर आधारित ब्रांड",
+
+        points: [
+          "विश्वसनीय प्राकृतिक खाद्य ब्रांड",
+          "अराकू के जनजातीय किसानों से सीधी सोर्सिंग",
+          "उच्च और स्थिर बाजार मांग",
+          "संतुलित और आकर्षक मार्जिन",
+          "क्षेत्रीय व्यावसायिक समर्थन",
+          "निरंतर उत्पाद आपूर्ति",
+        ],
+      },
+
+      whatYouGet: {
+        eyebrow: "आपको क्या मिलेगा",
+        title: "पूर्ण व्यावसायिक सहयोग",
+
+        points: [
+          "स्टोर सेटअप और ब्रांडिंग सहायता",
+          "निरंतर उत्पाद आपूर्ति",
+          "मार्केटिंग और प्रचार सहयोग",
+          "स्टाफ प्रशिक्षण",
+          "24/7 तकनीकी और परिचालन सहायता",
+          "लगातार व्यवसाय मार्गदर्शन",
+        ],
+      },
+
+      store: {
+        eyebrow: "रिटेल अनुभव",
+        title: "गुणवत्ता और विश्वास दर्शाने वाला स्टोर",
+        description:
+          "AT Millets स्टोर शुद्धता, विश्वसनीयता और प्रीमियम अनुभव को दर्शाने के लिए डिज़ाइन किए गए हैं।",
+      },
+
+      earnings: {
+        eyebrow: "आय की संभावना",
+        title: "एक स्थायी आय मॉडल",
+        note: "आय स्थान, संचालन और बाजार परिस्थितियों पर निर्भर करती है।",
+      },
+
+      contacts: {
+        title: "व्यावसायिक पूछताछ के लिए",
+
+        regions: {
+          telangana: {
+            title: "तेलंगाना",
+            people: [
+              "कृष्णा उरुगोंडा – 9885558222",
+              "कविता गांधी – 8897265146",
+              "रघुराम नामा – 9989087740",
+            ],
+          },
+
+          rayalaseema: {
+            title: "रायलसीमा",
+            people: ["बल्ला राघवेंद्र – 8686202093", "गोपाल – 9346508834"],
+          },
+
+          andhra: {
+            title: "आंध्र प्रदेश",
+            people: [
+              "अमरा मोहन – 9652152467",
+              "MD इस्माइल सैय्यद – 9542252286",
+            ],
+          },
         },
       },
     },
