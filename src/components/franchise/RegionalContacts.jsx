@@ -10,10 +10,10 @@ const RegionalContacts = () => {
   return (
     <section style={styles.wrapper}>
       <motion.h2
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.6 }}
         style={styles.title}
       >
         {contacts.title}
@@ -23,20 +23,35 @@ const RegionalContacts = () => {
         {regions.map((region, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
+            transition={{ delay: i * 0.12 }}
+            whileHover={{ y: -6 }}
             style={styles.card}
           >
-            <h3 style={styles.regionTitle}>{region.title}</h3>
+            <div style={styles.regionHeader}>
+              <span style={styles.regionBadge}>{region.title}</span>
+            </div>
 
             <ul style={styles.list}>
-              {region.people.map((person, idx) => (
-                <li key={idx} style={styles.person}>
-                  📞 {person}
-                </li>
-              ))}
+              {region.people.map((entry, idx) => {
+                const [name, phone] = entry.split("–").map((s) => s.trim());
+
+                return (
+                  <li key={idx} style={styles.person}>
+                    <span style={styles.personName}>{name}</span>
+
+                    <a
+                      href={`tel:${phone}`}
+                      style={styles.phone}
+                      aria-label={`Call ${name}`}
+                    >
+                      {phone}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </motion.div>
         ))}
@@ -47,45 +62,52 @@ const RegionalContacts = () => {
 
 export default RegionalContacts;
 
-/* =========================================================
-   STYLES
-========================================================= */
-
 const styles = {
   wrapper: {
     padding: "120px 20px",
-    background: "linear-gradient(to bottom, #f5faf7, #ffffff)",
+    background: "linear-gradient(180deg, #f4fbf7 0%, #ffffff 100%)",
   },
 
   title: {
     textAlign: "center",
-    fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
-    fontWeight: 800,
-    color: "#0d2817",
-    marginBottom: 48,
+    fontSize: "clamp(1.9rem, 4vw, 2.6rem)",
+    fontWeight: 900,
+    color: "#0f2e1d",
+    marginBottom: 56,
+    letterSpacing: "-0.02em",
   },
 
   grid: {
     maxWidth: 1100,
     margin: "0 auto",
     display: "grid",
-    gap: 24,
+    gap: 28,
     gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
   },
 
   card: {
     background: "#ffffff",
     padding: 28,
-    borderRadius: 18,
-    border: "1px solid rgba(60,139,101,0.15)",
-    boxShadow: "0 10px 30px rgba(60,139,101,0.08)",
+    borderRadius: 20,
+    border: "1px solid rgba(22,163,74,0.15)",
+    boxShadow: "0 12px 30px rgba(22,163,74,0.08)",
+    transition: "transform 0.25s ease, box-shadow 0.25s ease",
   },
 
-  regionTitle: {
-    fontSize: "1.3rem",
+  regionHeader: {
+    marginBottom: 18,
+  },
+
+  regionBadge: {
+    display: "inline-block",
+    padding: "6px 14px",
+    borderRadius: 999,
+    background: "rgba(22,163,74,0.12)",
+    color: "#166534",
+    fontSize: "0.85rem",
     fontWeight: 700,
-    color: "#2d7050",
-    marginBottom: 16,
+    letterSpacing: "0.04em",
+    textTransform: "uppercase",
   },
 
   list: {
@@ -94,12 +116,29 @@ const styles = {
     margin: 0,
     display: "flex",
     flexDirection: "column",
-    gap: 10,
+    gap: 14,
   },
 
   person: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: 12,
+    paddingBottom: 8,
+    borderBottom: "1px dashed rgba(0,0,0,0.08)",
+  },
+
+  personName: {
     fontSize: "0.95rem",
-    color: "#3f5f4f",
-    lineHeight: 1.6,
+    color: "#1f3d2b",
+    fontWeight: 500,
+  },
+
+  phone: {
+    fontSize: "0.95rem",
+    fontWeight: 700,
+    color: "#15803d",
+    textDecoration: "none",
+    whiteSpace: "nowrap",
   },
 };

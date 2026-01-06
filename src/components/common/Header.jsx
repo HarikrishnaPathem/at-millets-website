@@ -9,11 +9,11 @@ import {
   Menu,
   X,
   ArrowRight,
-  Leaf,
   Globe,
 } from "lucide-react";
 
 import { useLanguage } from "../../i18n/LanguageContext";
+import logo from "../../assets/images/logo.png";
 
 const Header = () => {
   const { lang, setLang, t } = useLanguage();
@@ -26,26 +26,28 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const getLangLabel = (code) => {
+    switch (code) {
+      case "TE":
+        return "తెల";
+      case "HI":
+        return "हि";
+      default:
+        return "EN";
+    }
+  };
+
   /* ---------- SCROLL ---------- */
   useEffect(() => {
-    let ticking = false;
-    const onScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 20);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   /* ---------- BODY LOCK ---------- */
   useEffect(() => {
-    document.body.style.overflow = mobileOpen && isMobile ? "hidden" : "";
-  }, [mobileOpen, isMobile]);
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+  }, [mobileOpen]);
 
   const navigationData = {
     company: {
@@ -55,16 +57,12 @@ const Header = () => {
         { label: t("nav.about"), path: "/about" },
         { label: t("nav.sourcing"), path: "/sourcing" },
         { label: t("nav.supply"), path: "/supply" },
-        //{ label: t("nav.packaging"), path: "/packaging" },
       ],
     },
     products: {
       icon: Package,
       label: t("nav.products"),
-      items: [
-        { label: t("nav.allProducts"), path: "/products" },
-        //{ label: t("nav.recipes"), path: "/recipes" },
-      ],
+      items: [{ label: t("nav.allProducts"), path: "/products" }],
     },
     business: {
       icon: Handshake,
@@ -78,13 +76,12 @@ const Header = () => {
 
   return (
     <>
+      {/* ================= HEADER ================= */}
       <motion.header
         animate={{
-          top: scrolled ? 12 : 20,
-          backgroundColor: scrolled
-            ? "rgba(255,255,255,0.55)"
-            : "rgba(255,255,255,0.75)",
-          backdropFilter: scrolled ? "blur(6px)" : "blur(10px)",
+          top: scrolled ? 10 : 16,
+          backgroundColor: "rgba(255,255,255,0.65)",
+          backdropFilter: "blur(12px)",
         }}
         transition={{ duration: 0.25 }}
         style={styles.header}
@@ -93,7 +90,7 @@ const Header = () => {
           {/* LOGO */}
           <a href="/" style={styles.logo}>
             <div style={styles.logoIcon}>
-              <Leaf size={20} />
+              <img src={logo} alt="AT Millets Logo" style={styles.logoImage} />
             </div>
             <div>
               <div style={styles.logoTitle}>AT Millets Araku Naturals</div>
@@ -101,7 +98,7 @@ const Header = () => {
             </div>
           </a>
 
-          {/* NAV */}
+          {/* DESKTOP NAV */}
           {isDesktop && (
             <nav style={styles.nav}>
               {Object.entries(navigationData).map(([key, data]) => {
@@ -115,9 +112,7 @@ const Header = () => {
                   >
                     <button style={styles.navButton}>
                       <Icon size={16} />
-                      {!scrolled && (
-                        <span style={styles.navLabel}>{data.label}</span>
-                      )}
+                      <span>{data.label}</span>
                       <ChevronDown size={14} />
                     </button>
 
@@ -130,15 +125,14 @@ const Header = () => {
                           style={styles.dropdown}
                         >
                           {data.items.map((item) => (
-                            <motion.a
+                            <a
                               key={item.label}
                               href={item.path}
                               style={styles.dropdownLink}
-                              whileHover={leafHover}
                             >
-                              <span>{item.label}</span>
+                              {item.label}
                               <ArrowRight size={14} />
-                            </motion.a>
+                            </a>
                           ))}
                         </motion.div>
                       )}
@@ -151,7 +145,7 @@ const Header = () => {
 
           {/* RIGHT ACTIONS */}
           <div style={styles.rightActions}>
-            {/* LANGUAGE DROPDOWN */}
+            {/* DESKTOP LANGUAGE */}
             {isDesktop && (
               <div
                 style={styles.langWrapper}
@@ -160,7 +154,7 @@ const Header = () => {
               >
                 <button style={styles.langButton}>
                   <Globe size={14} />
-                  <span>{lang}</span>
+                  <span>{getLangLabel(lang)}</span>
                   <ChevronDown size={12} />
                 </button>
 
@@ -175,16 +169,13 @@ const Header = () => {
                       {["EN", "TE", "HI"].map((l) => (
                         <button
                           key={l}
-                          onClick={() => {
-                            setLang(l);
-                            setLangOpen(false);
-                          }}
+                          onClick={() => setLang(l)}
                           style={{
                             ...styles.langOption,
                             ...(lang === l ? styles.langActive : {}),
                           }}
                         >
-                          {l}
+                          {getLangLabel(l)}
                         </button>
                       ))}
                     </motion.div>
@@ -193,75 +184,7 @@ const Header = () => {
               </div>
             )}
 
-            {/* ================= MOBILE MENU ================= */}
-            <AnimatePresence>
-              {isMobile && mobileOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: -12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.25 }}
-                  style={styles.mobileMenu}
-                >
-                  <div style={styles.mobileScroll}>
-                    {/* LANGUAGE */}
-                    <div style={styles.mobileSection}>
-                      <div style={styles.mobileHeader}>{t("language")}</div>
-                      <div style={styles.mobileLangRow}>
-                        {["EN", "TE", "HI"].map((l) => (
-                          <button
-                            key={l}
-                            onClick={() => setLang(l)}
-                            style={{
-                              ...styles.mobileLangBtn,
-                              ...(lang === l ? styles.langActive : {}),
-                            }}
-                          >
-                            {l}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* NAV SECTIONS */}
-                    {Object.values(navigationData).map((section) => {
-                      const Icon = section.icon;
-                      return (
-                        <div key={section.label} style={styles.mobileSection}>
-                          <div style={styles.mobileHeader}>
-                            <Icon size={14} />
-                            {section.label}
-                          </div>
-                          {section.items.map((item) => (
-                            <a
-                              key={item.label}
-                              href={item.path}
-                              style={styles.mobileLink}
-                              onClick={() => setMobileOpen(false)}
-                            >
-                              {item.label}
-                            </a>
-                          ))}
-                        </div>
-                      );
-                    })}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* CTA */}
-            {isDesktop && (
-              <motion.a
-                href="/franchise"
-                style={styles.cta}
-                whileHover={{ scale: 1.04 }}
-              >
-                {t("nav.partner")}
-                <ArrowRight size={16} />
-              </motion.a>
-            )}
-
+            {/* MOBILE TOGGLE */}
             {isMobile && (
               <button
                 style={styles.mobileToggle}
@@ -272,65 +195,110 @@ const Header = () => {
             )}
           </div>
         </div>
+
+        {/* ===== MOBILE LANGUAGE BAR (ATTACHED) ===== */}
+        {isMobile && (
+          <div style={styles.mobileLangBar}>
+            <LangPill code="EN" label="EN" />
+            <LangPill code="TE" label="తెల" />
+            <LangPill code="HI" label="हि" />
+          </div>
+        )}
       </motion.header>
+
+      {/* ================= MOBILE MENU ================= */}
+      <AnimatePresence>
+        {isMobile && mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25 }}
+            style={styles.mobileMenu}
+          >
+            {Object.values(navigationData).map((section) => (
+              <div key={section.label} style={styles.mobileSection}>
+                <div style={styles.mobileHeader}>{section.label}</div>
+                {section.items.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.path}
+                    style={styles.mobileLink}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
 
-/* ---------- LEAF HOVER ---------- */
-const leafHover = {
-  background:
-    "linear-gradient(135deg,#3c8b65,#2f6f4e),repeating-linear-gradient(30deg,rgba(255,255,255,0.18) 0 1px,transparent 6px)",
-  color: "#fff",
-  borderRadius: "14px 28px",
+/* ===== LANGUAGE PILL ===== */
+const LangPill = ({ code, label }) => {
+  const { lang, setLang } = useLanguage();
+  return (
+    <button
+      onClick={() => setLang(code)}
+      style={{
+        ...styles.langPill,
+        ...(lang === code ? styles.langPillActive : {}),
+      }}
+    >
+      {label}
+    </button>
+  );
 };
 
-/* ---------- STYLES ---------- */
+/* ================= STYLES ================= */
+
 const styles = {
   header: {
     position: "fixed",
-    left: 0,
-    right: 0,
-    margin: "0 16px",
+    left: 12,
+    right: 12,
     zIndex: 1000,
-    borderRadius: 16,
-    border: "1px solid rgba(60,139,101,0.18)",
-    boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+    borderRadius: 18,
+    border: "1px solid rgba(60,139,101,0.2)",
   },
+
   container: {
     height: 64,
-    padding: "0 24px",
+    padding: "0 20px",
     display: "grid",
     gridTemplateColumns: "auto 1fr auto",
     alignItems: "center",
   },
+
   logo: { display: "flex", gap: 12, textDecoration: "none" },
   logoIcon: {
-    width: 34,
-    height: 34,
-    background: "linear-gradient(135deg,#2f6f4e,#3c8b65)",
-    borderRadius: "12px 20px",
-    color: "#fff",
+    width: 38,
+    height: 38,
+    background: "#fff",
+    borderRadius: 12,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
-  logoTitle: { fontWeight: 700, fontSize: 16 },
-  logoSub: { fontSize: 10, color: "#6f8f7a" },
+  logoImage: { width: "75%", height: "75%", objectFit: "contain" },
+  logoTitle: { fontWeight: 700, fontSize: 15 },
+  logoSub: { fontSize: 12, color: "#25a351ff" },
 
   nav: { display: "flex", justifyContent: "center", gap: 24 },
   navWrapper: { position: "relative" },
   navButton: {
     display: "flex",
-    gap: 8,
+    gap: 6,
     alignItems: "center",
     background: "transparent",
     border: "none",
     cursor: "pointer",
     fontWeight: 600,
-    whiteSpace: "nowrap",
   },
-  navLabel: { whiteSpace: "nowrap" },
 
   dropdown: {
     position: "absolute",
@@ -340,24 +308,29 @@ const styles = {
     padding: 8,
     minWidth: 220,
   },
+
   dropdownLink: {
     display: "flex",
     justifyContent: "space-between",
     padding: "10px 14px",
     textDecoration: "none",
-    color: "#3b2f22",
-    whiteSpace: "nowrap",
+    color: "#2f2f2f",
   },
 
   rightActions: {
     display: "flex",
     alignItems: "center",
     gap: 12,
-    position: "relative",
-    justifyContent: "flex-start",
-    flexDirection: "row-reverse",
+    justifyContent: "center",
   },
 
+  mobileToggle: {
+    width: 38,
+    height: 38,
+    borderRadius: 10,
+    border: "1px solid rgba(0,0,0,0.15)",
+    background: "transparent",
+  },
   langWrapper: { position: "relative" },
   langButton: {
     display: "flex",
@@ -390,77 +363,57 @@ const styles = {
     color: "#fff",
     borderRadius: 6,
   },
+
+  /* ===== MOBILE LANG BAR ===== */
+  mobileLangBar: {
+    display: "flex",
+    justifyContent: "center",
+    gap: 8,
+    padding: "6px 0 10px",
+  },
+
+  langPill: {
+    padding: "4px 10px",
+    fontSize: 13,
+    fontWeight: 700,
+    borderRadius: 999,
+    border: "1px solid rgba(0,0,0,0.15)",
+    background: "transparent",
+    color: "#2f6f4e",
+  },
+
+  langPillActive: {
+    background: "linear-gradient(135deg,#2f6f4e,#3c8b65)",
+    color: "#fff",
+    border: "none",
+  },
+
+  /* ===== MOBILE MENU ===== */
   mobileMenu: {
     position: "fixed",
-    top: 88,
+    top: 135,
     left: 16,
     right: 16,
-    maxHeight: "calc(100vh - 120px)",
-    background: "#ffffff",
+    background: "#fff",
     borderRadius: 16,
-    zIndex: 999,
-    boxShadow: "0 12px 28px rgba(0,0,0,0.12)",
-    overflow: "hidden",
-  },
-
-  mobileScroll: {
     padding: 16,
-    overflowY: "auto",
-    WebkitOverflowScrolling: "touch",
+    boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+    zIndex: 999,
   },
 
-  mobileSection: {
-    marginBottom: 18,
-  },
-
+  mobileSection: { marginBottom: 14 },
   mobileHeader: {
     fontSize: 12,
     fontWeight: 700,
     color: "#6f8f7a",
-    marginBottom: 8,
-    display: "flex",
-    alignItems: "center",
-    gap: 6,
+    marginBottom: 6,
   },
-
   mobileLink: {
     display: "block",
-    padding: "10px 0",
-    textDecoration: "none",
-    color: "#3b2f22",
-    fontWeight: 500,
-  },
-
-  mobileLangRow: {
-    display: "flex",
-    gap: 8,
-  },
-
-  mobileLangBtn: {
-    flex: 1,
     padding: "8px 0",
-    border: "1px solid rgba(0,0,0,0.12)",
-    borderRadius: 8,
-    background: "transparent",
-    cursor: "pointer",
-  },
-
-  cta: {
-    border: "1.5px solid #3c8b65",
-    padding: "9px 18px",
-    borderRadius: "14px 26px",
     textDecoration: "none",
-    display: "flex",
-    gap: 6,
-    alignItems: "center",
-  },
-
-  mobileToggle: {
-    border: "1px solid rgba(0,0,0,0.15)",
-    background: "transparent",
-    borderRadius: 8,
-    width: 38,
-    height: 38,
+    color: "#2f2f2f",
+    fontWeight: 500,
   },
 };
 

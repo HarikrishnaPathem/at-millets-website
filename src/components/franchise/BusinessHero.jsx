@@ -2,165 +2,215 @@ import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import { useLanguage } from "../../i18n/LanguageContext";
 import heroImage from "../../assets/images/sunset_shop.png";
+import { TrendingUp, Users, Award } from "lucide-react";
 
 const BusinessHero = () => {
   const { t } = useLanguage();
   const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isTablet = useMediaQuery({ maxWidth: 1024 });
 
   const highlights =
     t("business.hero.highlights", { returnObjects: true }) || [];
 
   return (
     <section style={styles.wrapper}>
-      {/* Background Image */}
-      <img
-        src={heroImage}
-        alt="AT Millets Business Opportunity"
-        style={styles.bg}
-      />
+      {/* Background */}
+      <motion.div
+        style={styles.bgWrapper}
+        initial={{ scale: 1.08 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.4, ease: "easeOut" }}
+      >
+        <img src={heroImage} alt="AT Millets Business" style={styles.bg} />
+      </motion.div>
 
-      {/* Overlay */}
-      <div style={styles.overlay} />
+      {/* Overlays */}
+      <div style={styles.overlayGradient} />
+      <div style={styles.overlayTexture} />
 
       {/* Content */}
-      <motion.div
-        style={styles.content}
-        initial={{ opacity: 0, y: 32 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
+      <div
+        style={{
+          ...styles.container,
+          gridTemplateColumns: isTablet ? "1fr" : "1fr auto",
+        }}
       >
-        {/* Eyebrow */}
-        <span style={styles.eyebrow}>{t("business.hero.eyebrow")}</span>
-
-        {/* Title */}
-        <h1
+        {/* LEFT CONTENT */}
+        <motion.div
           style={{
-            ...styles.title,
-            fontSize: isMobile ? "2.2rem" : "clamp(2.8rem, 5vw, 3.8rem)",
+            ...styles.content,
+            background: "rgba(0,0,0,0.28)",
+            backdropFilter: "blur(6px)",
+            borderRadius: 20,
+            padding: isMobile ? "20px" : "28px",
           }}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          {t("business.hero.titleMain")}{" "}
-          <span style={styles.titleAccent}>
-            {t("business.hero.titleAccent")}
-          </span>
-        </h1>
+          <h1
+            style={{
+              ...styles.title,
+              fontSize: isMobile
+                ? "2rem"
+                : isTablet
+                ? "2.8rem"
+                : "clamp(3rem, 4vw, 4.2rem)",
+            }}
+          >
+            {t("business.hero.titleMain")}{" "}
+            <span style={styles.titleAccent}>
+              {t("business.hero.titleAccent")}
+            </span>
+          </h1>
 
-        {/* Subtitle */}
-        <p style={styles.subtitle}>{t("business.hero.subtitle")}</p>
+          <p style={styles.subtitle}>{t("business.hero.subtitle")}</p>
 
-        {/* Highlights */}
-        {Array.isArray(highlights) && (
-          <ul style={styles.list}>
-            {highlights.map((item, index) => (
-              <motion.li
-                key={index}
-                initial={{ opacity: 0, x: -12 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 + index * 0.12 }}
-                style={styles.listItem}
-              >
-                <span style={styles.check}>✓</span>
-                <span>{item}</span>
-              </motion.li>
-            ))}
-          </ul>
+          {Array.isArray(highlights) && (
+            <ul style={styles.list}>
+              {highlights.map((item, index) => (
+                <motion.li
+                  key={index}
+                  style={styles.listItem}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 + index * 0.12 }}
+                >
+                  <span style={styles.checkmark}>✓</span>
+                  <span style={styles.listText}>{item}</span>
+                </motion.li>
+              ))}
+            </ul>
+          )}
+
+          <p style={styles.description}>{t("business.hero.description")}</p>
+        </motion.div>
+
+        {/* RIGHT STATS */}
+        {!isMobile && (
+          <motion.div
+            style={styles.statsContainer}
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.6 }}
+          >
+            <StatCard icon={<TrendingUp />} value="250+" label="Partners" />
+            <StatCard icon={<Users />} value="50K+" label="Customers" />
+            <StatCard icon={<Award />} value="98%" label="Success Rate" />
+          </motion.div>
         )}
-
-        {/* Description */}
-        <p style={styles.description}>{t("business.hero.description")}</p>
-      </motion.div>
+      </div>
     </section>
   );
 };
 
 export default BusinessHero;
 
-/* =========================================================
-   STYLES
-========================================================= */
+/* =========================
+   STAT CARD
+========================= */
+const StatCard = ({ icon, value, label }) => (
+  <motion.div
+    style={styles.statCard}
+    whileHover={{ y: -8 }}
+    transition={{ duration: 0.3 }}
+  >
+    <div style={styles.statIcon}>{icon}</div>
+    <div style={styles.statValue}>{value}</div>
+    <div style={styles.statLabel}>{label}</div>
+  </motion.div>
+);
 
+/* =========================
+   STYLES
+========================= */
 const styles = {
   wrapper: {
     position: "relative",
     minHeight: "100vh",
-    display: "flex",
-    alignItems: "center",
-    padding: "140px 20px 60px", // 👈 FIX: header-safe top padding
+    paddingTop: 140, // safe for floating header
+    paddingBottom: 80,
     overflow: "hidden",
   },
 
-  bg: {
+  bgWrapper: {
     position: "absolute",
     inset: 0,
+  },
+
+  bg: {
     width: "100%",
     height: "100%",
     objectFit: "cover",
-    transform: "scale(1.04)",
-    filter: "saturate(1.05) contrast(1.05)", // 👈 subtle polish
+    filter: "brightness(0.85) contrast(1.1) saturate(1.1)",
   },
 
-  overlay: {
+  overlayGradient: {
     position: "absolute",
     inset: 0,
     background: `
-    linear-gradient(
-      to bottom,
-      rgba(15, 23, 42, 0.75) 0%,
-      rgba(15, 23, 42, 0.55) 30%,
-      rgba(15, 23, 42, 0.35) 55%,
-      rgba(15, 23, 42, 0.15) 75%,
-      rgba(15, 23, 42, 0.05) 100%
-    )
-  `,
+      linear-gradient(
+        180deg,
+        rgba(10,18,16,0.92) 0%,
+        rgba(10,18,16,0.75) 40%,
+        rgba(10,18,16,0.55) 70%,
+        rgba(10,18,16,0.35) 100%
+      )
+    `,
+    zIndex: 1,
+  },
+
+  overlayTexture: {
+    position: "absolute",
+    inset: 0,
+    backgroundImage:
+      "repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, transparent 2px)",
+    opacity: 0.4,
+    zIndex: 1,
+  },
+
+  container: {
+    position: "relative",
+    zIndex: 2,
+    maxWidth: 1400,
+    margin: "0 auto",
+    padding: "0 20px",
+    display: "grid",
+    gap: 60,
+    alignItems: "center",
   },
 
   content: {
-    position: "relative",
-    maxWidth: 760,
-    zIndex: 2,
-    color: "#ffffff",
-  },
-
-  eyebrow: {
-    fontSize: "0.8rem",
-    letterSpacing: "0.18em",
-    textTransform: "uppercase",
-    fontWeight: 700,
-    color: "#bbf7d0", // softer green for sunset
-    marginBottom: 14,
+    color: "#fff",
   },
 
   title: {
     fontWeight: 900,
-    letterSpacing: "-0.02em",
-    lineHeight: 1.15,
-    marginBottom: 18,
-    color: "#f8fafc", // warm white
+    lineHeight: 1.1,
+    marginBottom: 20,
+    textShadow: "0 6px 30px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.7)",
   },
 
   titleAccent: {
-    color: "#86efac", // brand green pops nicely
+    background:
+      "linear-gradient(135deg, #bbf7d0 0%, #4ade80 40%, #22c55e 70%, #16a34a 100%)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    backgroundClip: "text",
+    textShadow: "0 0 18px rgba(74, 222, 128, 0.65)", // glow for readability
   },
 
   subtitle: {
-    fontSize: "1.15rem",
-    lineHeight: 1.7,
-    color: "rgba(248, 250, 252, 0.9)",
-    maxWidth: 640,
-    marginBottom: 28,
-  },
-
-  description: {
-    fontSize: "1.05rem",
-    lineHeight: 1.8,
-    color: "rgba(248, 250, 252, 0.85)",
-    maxWidth: 680,
+    fontSize: "1.1rem",
+    marginBottom: 32,
+    color: "rgba(255,255,255,0.95)",
+    textShadow: "0 3px 12px rgba(0,0,0,0.7)",
   },
 
   list: {
     listStyle: "none",
     padding: 0,
-    margin: "0 0 28px 0",
+    marginBottom: 32,
     display: "flex",
     flexDirection: "column",
     gap: 14,
@@ -169,23 +219,63 @@ const styles = {
   listItem: {
     display: "flex",
     alignItems: "center",
-    gap: 12,
-    fontSize: "1.05rem",
-    fontWeight: 500,
-    lineHeight: 1.6,
+    gap: 14,
+    padding: "12px 16px",
+    background: "rgba(255,255,255,0.08)",
+    borderRadius: 12,
   },
 
-  check: {
-    display: "inline-flex",
+  checkmark: {
+    width: 26,
+    height: 26,
+    borderRadius: "50%",
+    background: "#22c55e",
+    color: "#064e3b",
+    display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    width: 22,
-    height: 22,
-    borderRadius: "50%",
-    background: "#4ade80",
-    color: "#064e3b",
     fontWeight: 900,
-    fontSize: "0.85rem",
-    flexShrink: 0,
+  },
+
+  listText: {
+    fontSize: "1rem",
+    color: "rgba(255,255,255,0.96)",
+    textShadow: "0 2px 8px rgba(0,0,0,0.6)",
+  },
+
+  description: {
+    fontSize: "1.05rem",
+    lineHeight: 1.8,
+    color: "rgba(255,255,255,0.88)",
+    textShadow: "0 2px 6px rgba(0,0,0,0.6)",
+  },
+
+  statsContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 20,
+  },
+
+  statCard: {
+    background: "rgba(255,255,255,0.12)",
+    padding: 24,
+    borderRadius: 20,
+    backdropFilter: "blur(16px)",
+    minWidth: 200,
+  },
+
+  statIcon: {
+    color: "#86efac",
+    marginBottom: 12,
+  },
+
+  statValue: {
+    fontSize: "2.4rem",
+    fontWeight: 900,
+  },
+
+  statLabel: {
+    fontSize: "0.9rem",
+    opacity: 0.85,
   },
 };
