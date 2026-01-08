@@ -2,6 +2,13 @@ import { motion } from "framer-motion";
 import { ShieldCheck, Leaf, Microscope, Handshake } from "lucide-react";
 import { useLanguage } from "../../i18n/LanguageContext";
 
+/* === IMPORT CERTIFICATION IMAGES === */
+import fssaiImg from "../../assets/images/FSSAI_logo.png";
+import organicImg from "../../assets/images/np.png";
+import labImg from "../../assets/images/lab_tested.png";
+import gmpImg from "../../assets/images/good_manufacturing_practices.png";
+import traceImg from "../../assets/images/traceable_supply_chain.png";
+
 /* =========================================================
    TRUST & CERTIFICATIONS SECTION
 ========================================================= */
@@ -33,11 +40,15 @@ const TrustSection = () => {
   ];
 
   const certifications = [
-    { key: "fssai", label: t("home.trust.badges.fssai") },
-    { key: "organic", label: t("home.trust.badges.organic") },
-    { key: "lab", label: t("home.trust.badges.lab") },
-    { key: "gmp", label: t("home.trust.badges.gmp") },
-    { key: "trace", label: t("home.trust.badges.trace") },
+    { key: "fssai", label: t("home.trust.badges.fssai"), image: fssaiImg },
+    {
+      key: "organic",
+      label: t("home.trust.badges.organic"),
+      image: organicImg,
+    },
+    { key: "lab", label: t("home.trust.badges.lab"), image: labImg },
+    { key: "gmp", label: t("home.trust.badges.gmp"), image: gmpImg },
+    { key: "trace", label: t("home.trust.badges.trace"), image: traceImg },
   ];
 
   return (
@@ -102,18 +113,18 @@ const TrustSection = () => {
           <p style={styles.badgeTitle}>{t("home.trust.badges.title")}</p>
 
           <div style={styles.badgeRow}>
-            {certifications.map((badge, i) => (
+            {certifications.map((badge) => (
               <motion.div
                 key={badge.key}
                 style={styles.badgeCard}
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
-                {/* Replace src with HD logos */}
                 <img
-                  src={`/certifications/${badge.key}.png`}
+                  src={badge.image}
                   alt={badge.label}
                   style={styles.badgeImage}
+                  loading="lazy"
                 />
                 <span style={styles.badgeLabel}>{badge.label}</span>
               </motion.div>
