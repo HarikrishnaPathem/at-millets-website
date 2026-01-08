@@ -47,8 +47,6 @@ const TrustSection = () => {
       image: organicImg,
     },
     { key: "lab", label: t("home.trust.badges.lab"), image: labImg },
-    { key: "gmp", label: t("home.trust.badges.gmp"), image: gmpImg },
-    { key: "trace", label: t("home.trust.badges.trace"), image: traceImg },
   ];
 
   return (

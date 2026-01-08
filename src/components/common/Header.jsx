@@ -26,6 +26,8 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const [onDarkBg, setOnDarkBg] = useState(false);
+
   const getLangLabel = (code) => {
     switch (code) {
       case "TE":
@@ -42,6 +44,31 @@ const Header = () => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const darkSections = document.querySelectorAll("[data-dark]");
+    if (!darkSections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setOnDarkBg(true);
+          } else {
+            setOnDarkBg(false);
+          }
+        });
+      },
+      {
+        rootMargin: "-80px 0px -80% 0px", // header height aware
+        threshold: 0.1,
+      }
+    );
+
+    darkSections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
   }, []);
 
   /* ---------- BODY LOCK ---------- */
@@ -80,8 +107,8 @@ const Header = () => {
       <motion.header
         animate={{
           top: scrolled ? 10 : 16,
-          backgroundColor: "rgba(255,255,255,0.65)",
-          backdropFilter: "blur(12px)",
+          backgroundColor: "rgba(47,111,78,0.15)",
+          backdropFilter: "blur(6px)",
         }}
         transition={{ duration: 0.25 }}
         style={styles.header}
@@ -93,8 +120,22 @@ const Header = () => {
               <img src={logo} alt="AT Millets Logo" style={styles.logoImage} />
             </div>
             <div>
-              <div style={styles.logoTitle}>AT Millets Araku Naturals</div>
-              <div style={styles.logoSub}>Tribal Heritage</div>
+              <div
+                style={{
+                  ...styles.logoTitle,
+                  color: onDarkBg ? "#ffffff" : "#1a1a1a",
+                }}
+              >
+                AT Millets Araku Naturals
+              </div>
+              <div
+                style={{
+                  ...styles.logoSub,
+                  color: onDarkBg ? "#d1fae5" : "#1a5a3a",
+                }}
+              >
+                Farmer Heritage
+              </div>
             </div>
           </a>
 
@@ -272,7 +313,7 @@ const styles = {
     right: 12,
     zIndex: 1000,
     borderRadius: 18,
-    border: "1px solid rgba(60,139,101,0.2)",
+    border: "1px solid rgba(60,139,101,0.4)",
   },
 
   container: {
@@ -293,9 +334,9 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
   },
-  logoImage: { width: "75%", height: "75%", objectFit: "contain" },
+  logoImage: { width: "100%", height: "100%", objectFit: "contain" },
   logoTitle: { fontWeight: 700, fontSize: 15 },
-  logoSub: { fontSize: 12, color: "#25a351ff" },
+  logoSub: { fontSize: 12, fontWeight: 600 },
 
   nav: { display: "flex", justifyContent: "center", gap: 24 },
   navWrapper: { position: "relative" },
@@ -330,14 +371,14 @@ const styles = {
     display: "flex",
     alignItems: "center",
     gap: 12,
-    justifyContent: "center",
+    justifyContent: "end",
   },
 
   mobileToggle: {
     width: 38,
     height: 38,
     borderRadius: 10,
-    border: "1px solid rgba(0,0,0,0.15)",
+    border: "1px solid rgba(0,0,0,0.6)",
     background: "transparent",
   },
   langWrapper: { position: "relative" },
@@ -386,7 +427,7 @@ const styles = {
     fontSize: 13,
     fontWeight: 700,
     borderRadius: 999,
-    border: "1px solid rgba(0,0,0,0.15)",
+    border: "2px solid rgba(0,0,0,0.5)",
     background: "transparent",
     color: "#2f6f4e",
   },

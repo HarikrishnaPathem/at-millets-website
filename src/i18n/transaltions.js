@@ -10,7 +10,7 @@ export const translations = {
       products: "Products",
       business: "Business",
       about: "About Us",
-      sourcing: "Tribal Sourcing",
+      sourcing: "Sourcing",
       supply: "Supply Chain",
       packaging: "Packaging",
       quality: "Quality Standards",
@@ -49,7 +49,7 @@ export const translations = {
         titleAccent: "Sustained by Trust.",
 
         description:
-          "AT Millets began in the tribal highlands of Araku Valley, where ancient grains have been cultivated for generations. We work directly with indigenous farmers, building long-term partnerships that respect land, people, and tradition.",
+          "AT Millets began in the highlands of Araku Valley, where ancient grains have been cultivated for generations. We work directly with indigenous farmers, building long-term partnerships that respect land, people, and tradition.",
 
         pillars: {
           direct: {
@@ -57,7 +57,7 @@ export const translations = {
             desc: "No middlemen. Transparent procurement at fair prices.",
           },
           partnership: {
-            title: "Tribal Partnerships",
+            title: "Partnerships",
             desc: "Long-term collaboration with indigenous farming communities.",
           },
           knowledge: {
@@ -66,7 +66,7 @@ export const translations = {
           },
         },
 
-        badge: "Empowering 1000+ tribal families since 2020",
+        badge: "Empowering 1000+ farmer families since 2020",
 
         visual: {
           title: "Araku Valley",
@@ -83,7 +83,7 @@ export const translations = {
 
         integrity: {
           title: "Integrity at Origin",
-          desc: "We work directly with tribal farmers, ensuring transparency, fair pricing, and relationships built on trust.",
+          desc: "We work directly with farmers, ensuring transparency, fair pricing, and relationships built on trust.",
         },
 
         land: {
@@ -177,7 +177,7 @@ export const translations = {
             step: "Step 01",
             label: "Farmers",
             title: "Rooted With Farmers",
-            text: "We work directly with tribal farmers, building relationships based on trust, respect, and fair pricing.",
+            text: "We work directly with farmers, building relationships based on trust, respect, and fair pricing.",
           },
 
           cultivation: {
@@ -254,11 +254,11 @@ export const translations = {
         titleMain: "Rooted in Araku.",
         titleAccent: "Built on Trust.",
         paragraph1:
-          "AT Millets was founded in the tribal highlands of Araku Valley, where millet cultivation has been part of everyday life for generations.",
+          "AT Millets was founded in the highlands of Araku Valley, where millet cultivation has been part of everyday life for generations.",
         paragraph2:
           "What began as a local initiative has grown into a purpose-driven enterprise — connecting indigenous farmers with conscious consumers while preserving traditional farming wisdom.",
         highlight: "We don’t just source from Araku — we belong to it.",
-        imageAlt: "Araku Valley tribal farming landscape",
+        imageAlt: "Araku Valley farming landscape",
         imageLabel: "Araku Valley",
       },
       visionMission: {
@@ -273,7 +273,7 @@ export const translations = {
 
         mission: {
           title: "Our Mission",
-          text: "To empower tribal farmers, preserve indigenous agricultural practices, and deliver pure, traceable millets and natural foods to every household.",
+          text: "To empower farmers, preserve indigenous agricultural practices, and deliver pure, traceable millets and natural foods to every household.",
         },
       },
       whyAraku: {
@@ -285,7 +285,7 @@ export const translations = {
 
         araku: {
           title: "The Araku Advantage",
-          text: "Nestled in the Eastern Ghats, Araku Valley offers mineral-rich soil, high-altitude climate, and a legacy of tribal farming untouched by industrial practices.",
+          text: "Nestled in the Eastern Ghats, Araku Valley offers mineral-rich soil, high-altitude climate, and a legacy of farming untouched by industrial practices.",
         },
 
         millets: {
@@ -297,7 +297,7 @@ export const translations = {
           title: "Naturally Sustainable",
           text: "Millets grown in Araku require less water, no chemical dependence, and support biodiversity — making them a climate-smart food choice.",
         },
-        imageAlt: "Araku Valley hills and tribal farmlands",
+        imageAlt: "Araku Valley hills and farmlands",
       },
       sustainability: {
         eyebrow: "Our Responsibility",
@@ -324,25 +324,25 @@ export const translations = {
         images: {
           soil: "Soil health and natural farming practices",
           water: "Water conservation in agriculture",
-          farmers: "Sustainable farming by tribal communities",
+          farmers: "Sustainable farming by indigenous communities",
         },
       },
     },
     tribal: {
       hero: {
-        eyebrow: "Tribal Sourcing",
+        eyebrow: "Sourcing",
         titleMain: "Sourced With Respect.",
         titleAccent: "Rooted in Araku.",
         subtitle:
-          "Our sourcing begins in the tribal heartlands of Araku Valley, where generations of indigenous farmers cultivate millets in harmony with nature.",
-        imageAlt: "Tribal farmers of Araku Valley",
+          "Our sourcing begins in the heartlands of Araku Valley, where generations of indigenous farmers cultivate millets in harmony with nature.",
+        imageAlt: "Farmers of Araku Valley",
       },
       direct: {
         eyebrow: "Direct Sourcing",
         titleMain: "Straight From",
-        titleAccent: "Tribal Farmers",
+        titleAccent: "Araku Farmers",
         paragraph1:
-          "We source our millets directly from tribal farmers in Araku Valley, eliminating middlemen and ensuring transparency at every step.",
+          "We source our millets directly from the farmers in Araku Valley, eliminating middlemen and ensuring transparency at every step.",
         paragraph2:
           "By working closely with farming communities, we build long-term partnerships rooted in trust, dignity, and shared growth.",
         points: {
@@ -350,18 +350,18 @@ export const translations = {
           fairPricing: "Fair and transparent pricing for farmers",
           longTerm: "Long-term relationships with farming families",
         },
-        imageAlt: "Direct sourcing from tribal farmers",
+        imageAlt: "Direct sourcing from farmers",
       },
       ethical: {
         eyebrow: "ETHICAL PROCUREMENT",
         titleMain: "Fair, Transparent &",
         titleAccent: "Responsible Practices",
         subtitle:
-          "Our procurement model is built on fairness, transparency, and long-term trust with tribal farming communities.",
+          "Our procurement model is built on fairness, transparency, and long-term trust with farming communities.",
         items: {
           direct: {
             title: "Direct Procurement",
-            text: "We source directly from tribal farmers without intermediaries, ensuring complete transparency and control.",
+            text: "We source directly from farmers without intermediaries, ensuring complete transparency and control.",
           },
           fair: {
             title: "Fair Trade Pricing",
@@ -384,8 +384,8 @@ export const translations = {
         paragraph1:
           "True sustainability begins with empowering the people who grow our food. We believe farmers are partners, not suppliers.",
         paragraph2:
-          "Through education, stable income, and long-term collaboration, we help tribal farmers build secure and dignified livelihoods.",
-        imageAlt: "Tribal farmers engaged in sustainable agriculture",
+          "Through education, stable income, and long-term collaboration, we help farmers build secure and dignified livelihoods.",
+        imageAlt: "Farmers engaged in sustainable agriculture",
         items: {
           community: {
             title: "Community Strengthening",
@@ -439,12 +439,12 @@ export const translations = {
         titleMain: "From Source to Shelf,",
         titleAccent: "Built on Precision",
         subtitle:
-          "Our supply chain is designed to ensure transparency, hygiene, and consistency — from tribal farms to finished products.",
+          "Our supply chain is designed to ensure transparency, hygiene, and consistency — from farmers to finished products.",
 
         points: {
           procurement: {
             title: "Structured Procurement",
-            text: "Raw materials are sourced directly and systematically from verified tribal farming communities.",
+            text: "Raw materials are sourced directly and systematically from verified farming communities.",
           },
           processing: {
             title: "Controlled Processing",
@@ -466,7 +466,7 @@ export const translations = {
 
         procurement: {
           title: "Raw Material Procurement",
-          text: "Millets and raw produce are directly procured from trusted tribal farmers.",
+          text: "Millets and raw produce are directly procured from trusted farmers.",
         },
         processing: {
           title: "Specialized Processing",
@@ -509,7 +509,7 @@ export const translations = {
       page: {
         title: "Our Products",
         subtitle:
-          "Authentic millets, pulses, spices, and natural foods sourced directly from tribal farmers.",
+          "Authentic millets, pulses, spices, and natural foods sourced directly from farmers.",
       },
       empty: {
         title: "No Products Found",
@@ -591,7 +591,7 @@ export const translations = {
 
         points: [
           "Trusted and growing natural food brand",
-          "Direct sourcing from Araku tribal farmers",
+          "Direct sourcing from Araku farmers",
           "High and consistent market demand",
           "Attractive and sustainable margins",
           "Defined regional business support",
@@ -633,23 +633,20 @@ export const translations = {
           telangana: {
             title: "Telangana",
             people: [
-              "Krishna Urugonda – 9885558222",
-              "Kavitha Gandhi Vanguri – 8897265146",
-              "Raghuram Nama – 9989087740",
+              "Krishna– 9885558222",
+              "Kavitha– 8897265146",
+              "Raghuram– 9989087740",
             ],
           },
 
           rayalaseema: {
             title: "Rayalaseema",
-            people: ["Balla Raghavendra – 8686202093", "Gopal – 9346508834"],
+            people: ["Raghavendra – 8686202093", "Gopal – 9346508834"],
           },
 
           andhra: {
             title: "Andhra Pradesh",
-            people: [
-              "Amara Mohan – 9652152467",
-              "MD Ismail Sayyad – 9542252286",
-            ],
+            people: ["Mohan – 9652152467", "Ismail– 9542252286"],
           },
         },
       },
@@ -662,7 +659,7 @@ export const translations = {
       products: "ఉత్పత్తులు",
       business: "వ్యాపారం",
       about: "మా గురించి",
-      sourcing: "గిరిజన సేకరణ",
+      sourcing: "రైతుల సేకరణ",
       supply: "సరఫరా వ్యవస్థ",
       packaging: "ప్యాకేజింగ్",
       quality: "నాణ్యత ప్రమాణాలు",
@@ -700,7 +697,7 @@ export const translations = {
         titleAccent: "నమ్మకంతో కొనసాగింపు.",
 
         description:
-          "ఆరకు లోయ గిరిజన ప్రాంతాల్లో తరతరాలుగా సాగు చేస్తున్న పురాతన ధాన్యాలతో AT మిల్లెట్స్ ప్రారంభమైంది. భూమి, ప్రజలు, సంప్రదాయాలకు గౌరవం ఇస్తూ మేము నేరుగా గిరిజన రైతులతో భాగస్వామ్యం చేస్తాము.",
+          "ఆరకు లోయ రైతుల ప్రాంతాల్లో తరతరాలుగా సాగు చేస్తున్న పురాతన ధాన్యాలతో AT మిల్లెట్స్ ప్రారంభమైంది. భూమి, ప్రజలు, సంప్రదాయాలకు గౌరవం ఇస్తూ మేము నేరుగా రైతులతో భాగస్వామ్యం చేస్తాము.",
 
         pillars: {
           direct: {
@@ -708,8 +705,8 @@ export const translations = {
             desc: "మధ్యవర్తులు లేరు. న్యాయమైన ధరలతో పారదర్శక కొనుగోలు.",
           },
           partnership: {
-            title: "గిరిజన భాగస్వామ్యం",
-            desc: "గిరిజన వ్యవసాయ సముదాయాలతో దీర్ఘకాలిక భాగస్వామ్యం.",
+            title: "భాగస్వామ్యం",
+            desc: "రైతు వ్యవసాయ సముదాయాలతో దీర్ఘకాలిక భాగస్వామ్యం.",
           },
           knowledge: {
             title: "స్థానిక జ్ఞానం",
@@ -717,7 +714,7 @@ export const translations = {
           },
         },
 
-        badge: "2020 నుండి 1000+ గిరిజన కుటుంబాలకు సాధికారత",
+        badge: "2020 నుండి 1000+ రైతుల కుటుంబాలకు సాధికారత",
 
         visual: {
           title: "ఆరకు లోయ",
@@ -734,7 +731,7 @@ export const translations = {
 
         integrity: {
           title: "మూలంలో నిజాయితీ",
-          desc: "గిరిజన రైతులతో నేరుగా పని చేస్తూ పారదర్శకత, న్యాయమైన ధరలు, విశ్వాసాన్ని నిర్ధారిస్తాము.",
+          desc: "రైతులతో నేరుగా పని చేస్తూ పారదర్శకత, న్యాయమైన ధరలు, విశ్వాసాన్ని నిర్ధారిస్తాము.",
         },
 
         land: {
@@ -827,7 +824,7 @@ export const translations = {
             step: "దశ 01",
             label: "రైతులు",
             title: "రైతులతో కలిసి",
-            text: "గిరిజన రైతులతో నేరుగా పనిచేస్తూ నమ్మకం, గౌరవం మరియు న్యాయమైన ధరలను పాటిస్తాము.",
+            text: "రైతులతో నేరుగా పనిచేస్తూ నమ్మకం, గౌరవం మరియు న్యాయమైన ధరలను పాటిస్తాము.",
           },
 
           cultivation: {
@@ -903,12 +900,12 @@ export const translations = {
         titleMain: "అరకు నుంచి పుట్టింది.",
         titleAccent: "నమ్మకంతో నిర్మితమైంది.",
         paragraph1:
-          "అరకు లోయలోని గిరిజన ప్రాంతాల్లో, తరతరాలుగా సాగు చేస్తున్న మిల్లెట్స్ నుంచే AT Millets ప్రారంభమైంది.",
+          "అరకు లోయలోని రైతుల ప్రాంతాల్లో, తరతరాలుగా సాగు చేస్తున్న మిల్లెట్స్ నుంచే AT Millets ప్రారంభమైంది.",
         paragraph2:
-          "స్థానిక ప్రయత్నంగా ప్రారంభమైన ఈ ప్రయాణం, గిరిజన రైతులను నాణ్యమైన ఆహారాన్ని కోరుకునే వినియోగదారులతో కలిపే ఒక బాధ్యతాయుత వ్యాపారంగా మారింది.",
+          "స్థానిక ప్రయత్నంగా ప్రారంభమైన ఈ ప్రయాణం, రైతులను నాణ్యమైన ఆహారాన్ని కోరుకునే వినియోగదారులతో కలిపే ఒక బాధ్యతాయుత వ్యాపారంగా మారింది.",
         highlight:
           "మేము అరకు నుంచి ఉత్పత్తులు తీసుకోవడం మాత్రమే కాదు — అరకు లో భాగమే.",
-        imageAlt: "అరకు లోయ గిరిజన సాగు దృశ్యం",
+        imageAlt: "అరకు లోయ రైతుల సాగు దృశ్యం",
         imageLabel: "అరకు లోయ",
       },
       visionMission: {
@@ -923,7 +920,7 @@ export const translations = {
 
         mission: {
           title: "మా లక్ష్యం",
-          text: "గిరిజన రైతులను శక్తివంతం చేయడం, స్థానిక వ్యవసాయ పద్ధతులను కాపాడడం మరియు స్వచ్ఛమైన మిల్లెట్స్‌ను ప్రతి కుటుంబానికి అందించడం.",
+          text: "రైతులను శక్తివంతం చేయడం, స్థానిక వ్యవసాయ పద్ధతులను కాపాడడం మరియు స్వచ్ఛమైన మిల్లెట్స్‌ను ప్రతి కుటుంబానికి అందించడం.",
         },
       },
       whyAraku: {
@@ -935,7 +932,7 @@ export const translations = {
 
         araku: {
           title: "అరకు ప్రత్యేకత",
-          text: "తూర్పు ఘాట్‌లలో ఉన్న అరకు లోయ ఖనిజాలతో నిండిన నేల, ఎత్తైన వాతావరణం మరియు పరిశ్రమల ప్రభావం లేని గిరిజన వ్యవసాయ సంప్రదాయాన్ని కలిగి ఉంది.",
+          text: "తూర్పు ఘాట్‌లలో ఉన్న అరకు లోయ ఖనిజాలతో నిండిన నేల, ఎత్తైన వాతావరణం మరియు పరిశ్రమల ప్రభావం లేని రైతు వ్యవసాయ సంప్రదాయాన్ని కలిగి ఉంది.",
         },
 
         millets: {
@@ -947,7 +944,7 @@ export const translations = {
           title: "సహజంగా సస్టైనబుల్",
           text: "అరకు మిల్లెట్లు తక్కువ నీటితో, రసాయనాల అవసరం లేకుండా పెరిగి, జీవ వైవిధ్యాన్ని కాపాడుతాయి.",
         },
-        imageAlt: "అరకు లోయ పర్వతాలు మరియు గిరిజన వ్యవసాయ భూములు",
+        imageAlt: "అరకు లోయ పర్వతాలు మరియు వ్యవసాయ భూములు",
       },
       sustainability: {
         eyebrow: "మా బాధ్యత",
@@ -974,25 +971,25 @@ export const translations = {
         images: {
           soil: "మట్టిసారం మరియు సహజ సాగు విధానాలు",
           water: "వ్యవసాయంలో నీటి సంరక్షణ",
-          farmers: "గిరిజన రైతుల సుస్థిర సాగు",
+          farmers: "రైతుల సుస్థిర సాగు",
         },
       },
     },
     tribal: {
       hero: {
-        eyebrow: "గిరిజన సేకరణ",
+        eyebrow: "రైతు సేకరణ",
         titleMain: "గౌరవంతో సేకరణ.",
         titleAccent: "అరకు నుండి పుట్టింది.",
         subtitle:
-          "అరకు లోయలోని గిరిజన రైతులు తరతరాలుగా ప్రకృతితో కలిసి మిల్లెట్స్‌ను సాగు చేస్తూ వస్తున్నారు. మా ప్రయాణం అక్కడే మొదలవుతుంది.",
-        imageAlt: "అరకు లోయ గిరిజన రైతులు",
+          "అరకు లోయలోని రైతులు తరతరాలుగా ప్రకృతితో కలిసి మిల్లెట్స్‌ను సాగు చేస్తూ వస్తున్నారు. మా ప్రయాణం అక్కడే మొదలవుతుంది.",
+        imageAlt: "అరకు లోయ రైతులు",
       },
       direct: {
         eyebrow: "నేరుగా సేకరణ",
         titleMain: "నేరుగా",
-        titleAccent: "గిరిజన రైతుల నుండి",
+        titleAccent: "రైతుల నుండి",
         paragraph1:
-          "మేము అరకు లోయలోని గిరిజన రైతుల నుండి నేరుగా మిల్లెట్స్‌ను సేకరిస్తాము. మధ్యవర్తులు లేకుండా పారదర్శకతను పాటిస్తాము.",
+          "మేము అరకు లోయలోని రైతుల నుండి నేరుగా మిల్లెట్స్‌ను సేకరిస్తాము. మధ్యవర్తులు లేకుండా పారదర్శకతను పాటిస్తాము.",
         paragraph2:
           "రైతులతో నేరుగా కలిసి పనిచేసి, గౌరవం మరియు నమ్మకంపై ఆధారపడ్డ దీర్ఘకాల సంబంధాలను నిర్మిస్తున్నాము.",
         points: {
@@ -1000,18 +997,18 @@ export const translations = {
           fairPricing: "రైతులకు న్యాయమైన ధరలు",
           longTerm: "రైతు కుటుంబాలతో దీర్ఘకాల బంధం",
         },
-        imageAlt: "గిరిజన రైతుల నుండి నేరుగా సేకరణ",
+        imageAlt: "రైతుల నుండి నేరుగా సేకరణ",
       },
       ethical: {
         eyebrow: "నైతిక కొనుగోలు విధానాలు",
         titleMain: "న్యాయమైన, పారదర్శకమైన",
         titleAccent: "బాధ్యతాయుత ప్రక్రియలు",
         subtitle:
-          "మా కొనుగోలు విధానం గిరిజన రైతులతో నమ్మకం, పారదర్శకత మరియు దీర్ఘకాల సంబంధాలపై ఆధారపడి ఉంటుంది.",
+          "మా కొనుగోలు విధానం రైతులతో నమ్మకం, పారదర్శకత మరియు దీర్ఘకాల సంబంధాలపై ఆధారపడి ఉంటుంది.",
         items: {
           direct: {
             title: "నేరుగా కొనుగోలు",
-            text: "మధ్యవర్తులు లేకుండా నేరుగా గిరిజన రైతుల నుండి కొనుగోలు చేస్తాము.",
+            text: "మధ్యవర్తులు లేకుండా నేరుగా రైతుల నుండి కొనుగోలు చేస్తాము.",
           },
           fair: {
             title: "న్యాయమైన ధరలు",
@@ -1035,7 +1032,7 @@ export const translations = {
           "సుస్థిరత రైతుల నుండి ప్రారంభమవుతుంది. మా కోసం రైతులు సరఫరాదారులు కాదు, భాగస్వాములు.",
         paragraph2:
           "విద్య, స్థిరమైన ఆదాయం మరియు దీర్ఘకాల సహకారంతో రైతుల జీవనాన్ని మెరుగుపరుస్తాము.",
-        imageAlt: "సుస్థిర వ్యవసాయంలో పాల్గొంటున్న గిరిజన రైతులు",
+        imageAlt: "సుస్థిర వ్యవసాయంలో పాల్గొంటున్న రైతులు",
         items: {
           community: {
             title: "సముదాయ బలోపేతం",
@@ -1159,7 +1156,7 @@ export const translations = {
       page: {
         title: "మా ఉత్పత్తులు",
         subtitle:
-          "గిరిజన రైతుల నుండి నేరుగా సేకరించిన మిల్లెట్లు, పప్పులు, మసాలాలు మరియు సహజ ఆహారాలు.",
+          "రైతుల నుండి నేరుగా సేకరించిన మిల్లెట్లు, పప్పులు, మసాలాలు మరియు సహజ ఆహారాలు.",
       },
       empty: {
         title: "ఉత్పత్తులు కనబడలేదు",
@@ -1241,7 +1238,7 @@ export const translations = {
 
         points: [
           "నమ్మకమైన సహజ ఆహార బ్రాండ్",
-          "అరకు గిరిజన రైతుల నుండి నేరుగా సేకరణ",
+          "అరకు రైతుల నుండి నేరుగా సేకరణ",
           "ఎక్కువ మరియు నిరంతర మార్కెట్ డిమాండ్",
           "స్థిరమైన మరియు ఆకర్షణీయ లాభాలు",
           "ప్రాంతాల వారీగా వ్యాపార మద్దతు",
@@ -1283,23 +1280,20 @@ export const translations = {
           telangana: {
             title: "తెలంగాణ",
             people: [
-              "కృష్ణ ఉరుగొండ – 9885558222",
-              "కవిత గాంధీ వంగూరి – 8897265146",
-              "రఘురామ్ నామ – 9989087740",
+              "కృష్ణ – 9885558222",
+              "కవిత – 8897265146",
+              "రఘురామ్ – 9989087740",
             ],
           },
 
           rayalaseema: {
             title: "రాయలసీమ",
-            people: ["బళ్ల రాఘవేంద్ర – 8686202093", "గోపాల్ – 9346508834"],
+            people: ["రాఘవేంద్ర – 8686202093", "గోపాల్ – 9346508834"],
           },
 
           andhra: {
             title: "ఆంధ్రప్రదేశ్",
-            people: [
-              "అమర మోహన్ – 9652152467",
-              "MD ఇస్మాయిల్ సయ్యద్ – 9542252286",
-            ],
+            people: ["మోహన్ – 9652152467", "ఇస్మాయిల్ – 9542252286"],
           },
         },
       },
@@ -1312,7 +1306,7 @@ export const translations = {
       products: "उत्पाद",
       business: "व्यवसाय",
       about: "हमारे बारे में",
-      sourcing: "जनजातीय सोर्सिंग",
+      sourcing: "किसान सोर्सिंग",
       supply: "आपूर्ति श्रृंखला",
       packaging: "पैकेजिंग",
       quality: "गुणवत्ता मानक",
@@ -1349,7 +1343,7 @@ export const translations = {
         titleAccent: "विश्वास से पोषित।",
 
         description:
-          "AT मिलेट्स की शुरुआत अराकू घाटी के जनजातीय क्षेत्रों से हुई, जहाँ पीढ़ियों से प्राचीन अनाज उगाए जाते रहे हैं। हम भूमि, लोगों और परंपराओं का सम्मान करते हुए सीधे आदिवासी किसानों के साथ काम करते हैं।",
+          "AT मिलेट्स की शुरुआत अराकू घाटी के क्षेत्रों से हुई, जहाँ पीढ़ियों से प्राचीन अनाज उगाए जाते रहे हैं। हम भूमि, लोगों और परंपराओं का सम्मान करते हुए सीधे आदिवासी किसानों के साथ काम करते हैं।",
 
         pillars: {
           direct: {
@@ -1357,7 +1351,7 @@ export const translations = {
             desc: "कोई बिचौलिया नहीं। उचित मूल्य पर पारदर्शी खरीद।",
           },
           partnership: {
-            title: "जनजातीय साझेदारी",
+            title: "साझेदारी",
             desc: "आदिवासी कृषि समुदायों के साथ दीर्घकालिक सहयोग।",
           },
           knowledge: {
@@ -1514,7 +1508,7 @@ export const translations = {
             step: "चरण 01",
             label: "किसान",
             title: "किसानों के साथ",
-            text: "हम जनजातीय किसानों के साथ सीधे काम करते हैं, विश्वास और निष्पक्ष मूल्य प्रणाली के साथ।",
+            text: "हम किसानों के साथ सीधे काम करते हैं, विश्वास और निष्पक्ष मूल्य प्रणाली के साथ।",
           },
 
           cultivation: {
@@ -1553,12 +1547,12 @@ export const translations = {
         titleMain: "अराकू से जुड़ी हुई।",
         titleAccent: "विश्वास पर आधारित।",
         paragraph1:
-          "AT Millets की शुरुआत अराकू घाटी के जनजातीय क्षेत्रों से हुई, जहाँ पीढ़ियों से मोटे अनाज की खेती होती आ रही है।",
+          "AT Millets की शुरुआत अराकू घाटी के क्षेत्रों से हुई, जहाँ पीढ़ियों से मोटे अनाज की खेती होती आ रही है।",
         paragraph2:
           "एक स्थानीय पहल के रूप में शुरू हुई यह यात्रा आज एक उद्देश्यपूर्ण व्यवसाय बन चुकी है, जो किसानों और जागरूक उपभोक्ताओं को जोड़ती है।",
         highlight:
           "हम अराकू से केवल उत्पाद नहीं लेते — हम अराकू का हिस्सा हैं।",
-        imageAlt: "अराकू घाटी जनजातीय कृषि दृश्य",
+        imageAlt: "अराकू घाटी कृषि दृश्य",
         imageLabel: "अराकू घाटी",
       },
       visionMission: {
@@ -1573,7 +1567,7 @@ export const translations = {
 
         mission: {
           title: "हमारा मिशन",
-          text: "जनजातीय किसानों को सशक्त बनाना, पारंपरिक कृषि पद्धतियों को संरक्षित करना और शुद्ध, ट्रेसेबल खाद्य उत्पाद हर घर तक पहुँचाना।",
+          text: "किसानों को सशक्त बनाना, पारंपरिक कृषि पद्धतियों को संरक्षित करना और शुद्ध, ट्रेसेबल खाद्य उत्पाद हर घर तक पहुँचाना।",
         },
       },
       whyAraku: {
@@ -1630,19 +1624,19 @@ export const translations = {
     },
     tribal: {
       hero: {
-        eyebrow: "जनजातीय सोर्सिंग",
+        eyebrow: "किसान सोर्सिंग",
         titleMain: "सम्मान के साथ सोर्स किया गया।",
         titleAccent: "अराकू से जुड़ा हुआ।",
         subtitle:
-          "हमारी सोर्सिंग अराकू घाटी के जनजातीय इलाकों से शुरू होती है, जहाँ पीढ़ियों से किसान प्रकृति के साथ तालमेल में मिलेट्स उगाते हैं।",
-        imageAlt: "अराकू घाटी के जनजातीय किसान",
+          "हमारी सोर्सिंग अराकू घाटी के इलाकों से शुरू होती है, जहाँ पीढ़ियों से किसान प्रकृति के साथ तालमेल में मिलेट्स उगाते हैं।",
+        imageAlt: "अराकू घाटी के किसान",
       },
       direct: {
         eyebrow: "प्रत्यक्ष सोर्सिंग",
         titleMain: "सीधे",
-        titleAccent: "जनजातीय किसानों से",
+        titleAccent: "किसानों से",
         paragraph1:
-          "हम अराकू घाटी के जनजातीय किसानों से सीधे मिलेट्स की सोर्सिंग करते हैं, जिससे बिचौलियों की भूमिका समाप्त हो जाती है।",
+          "हम अराकू घाटी के किसानों से सीधे मिलेट्स की सोर्सिंग करते हैं, जिससे बिचौलियों की भूमिका समाप्त हो जाती है।",
         paragraph2:
           "किसान समुदायों के साथ मिलकर हम विश्वास, सम्मान और दीर्घकालिक साझेदारी बनाते हैं।",
         points: {
@@ -1650,7 +1644,7 @@ export const translations = {
           fairPricing: "किसानों को उचित और पारदर्शी मूल्य",
           longTerm: "किसान परिवारों के साथ दीर्घकालिक संबंध",
         },
-        imageAlt: "जनजातीय किसानों से प्रत्यक्ष सोर्सिंग",
+        imageAlt: "किसानों से प्रत्यक्ष सोर्सिंग",
       },
       ethical: {
         eyebrow: "नैतिक खरीद प्रक्रिया",
@@ -1809,7 +1803,7 @@ export const translations = {
       page: {
         title: "हमारे उत्पाद",
         subtitle:
-          "जनजातीय किसानों से सीधे प्राप्त मिलेट्स, दालें, मसाले और प्राकृतिक खाद्य उत्पाद।",
+          "किसानों से सीधे प्राप्त मिलेट्स, दालें, मसाले और प्राकृतिक खाद्य उत्पाद।",
       },
       empty: {
         title: "कोई उत्पाद नहीं मिला",
@@ -1891,7 +1885,7 @@ export const translations = {
 
         points: [
           "विश्वसनीय प्राकृतिक खाद्य ब्रांड",
-          "अराकू के जनजातीय किसानों से सीधी सोर्सिंग",
+          "अराकू के किसानों से सीधी सोर्सिंग",
           "उच्च और स्थिर बाजार मांग",
           "संतुलित और आकर्षक मार्जिन",
           "क्षेत्रीय व्यावसायिक समर्थन",
@@ -1933,23 +1927,20 @@ export const translations = {
           telangana: {
             title: "तेलंगाना",
             people: [
-              "कृष्णा उरुगोंडा – 9885558222",
-              "कविता गांधी वंगूरी – 8897265146",
-              "रघुराम नामा – 9989087740",
+              "कृष्णा – 9885558222",
+              "कविता – 8897265146",
+              "रघुराम – 9989087740",
             ],
           },
 
           rayalaseema: {
             title: "रायलसीमा",
-            people: ["बल्ला राघवेंद्र – 8686202093", "गोपाल – 9346508834"],
+            people: ["राघवेंद्र – 8686202093", "गोपाल – 9346508834"],
           },
 
           andhra: {
             title: "आंध्र प्रदेश",
-            people: [
-              "अमरा मोहन – 9652152467",
-              "MD इस्माइल सैय्यद – 9542252286",
-            ],
+            people: ["मोहन – 9652152467", "इस्माइल – 9542252286"],
           },
         },
       },

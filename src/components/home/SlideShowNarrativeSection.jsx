@@ -1,9 +1,10 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 import { useLanguage } from "../../i18n/LanguageContext";
 
 /* =========================================================
-   SLIDES CONFIG (KEY-BASED FOR TRANSLATIONS)
+   SLIDES CONFIG
 ========================================================= */
 
 const SLIDES = [
@@ -22,27 +23,54 @@ const SlideshowNarrativeSection = () => {
   const { t } = useLanguage();
   const [active, setActive] = useState(0);
 
-  /* AUTO SLIDE */
+  const isTablet = useMediaQuery({ maxWidth: 1024 });
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+
+  /* AUTO SLIDE (DISABLED ON MOBILE) */
   useEffect(() => {
+    if (isMobile) return;
+
     const interval = setInterval(() => {
       setActive((prev) => (prev + 1) % SLIDES.length);
     }, 6000);
+
     return () => clearInterval(interval);
-  }, []);
+  }, [isMobile]);
 
   return (
-    <section style={styles.wrapper}>
+    <section
+      style={{
+        ...styles.wrapper,
+        padding: isMobile ? "100px 0" : "160px 0",
+      }}
+    >
       <div style={styles.background} />
 
-      <div style={styles.container}>
+      <div
+        style={{
+          ...styles.container,
+          padding: isMobile ? "0 20px" : "0 48px",
+        }}
+      >
         {/* HEADER */}
-        <div style={styles.header}>
+        <div
+          style={{
+            ...styles.header,
+            marginBottom: isMobile ? 60 : 80,
+            textAlign: isMobile ? "center" : "left",
+          }}
+        >
           <span style={styles.eyebrow}>
             <span style={styles.dot}>●</span>
             {t("home.narrative.eyebrow")}
           </span>
 
-          <h2 style={styles.title}>
+          <h2
+            style={{
+              ...styles.title,
+              fontSize: isMobile ? "2.1rem" : "clamp(2.4rem,4.5vw,3.8rem)",
+            }}
+          >
             {t("home.narrative.title")}
             <br />
             <span style={styles.titleAccent}>
@@ -60,27 +88,58 @@ const SlideshowNarrativeSection = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              style={styles.slide}
+              style={{
+                ...styles.slide,
+                gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+                gap: isMobile ? 40 : 80,
+                textAlign: isMobile ? "center" : "left",
+              }}
             >
               {/* LEFT */}
-              <div style={styles.textBlock}>
+              <div
+                style={{
+                  ...styles.textBlock,
+                  alignItems: isMobile ? "center" : "flex-start",
+                }}
+              >
                 <span style={styles.step}>
                   {t(`home.narrative.slides.${SLIDES[active].key}.step`)}
                 </span>
 
-                <h3 style={styles.slideTitle}>
+                <h3
+                  style={{
+                    ...styles.slideTitle,
+                    fontSize: isMobile ? "1.6rem" : "2.2rem",
+                  }}
+                >
                   {t(`home.narrative.slides.${SLIDES[active].key}.title`)}
                 </h3>
 
-                <p style={styles.slideText}>
+                <p
+                  style={{
+                    ...styles.slideText,
+                    fontSize: isMobile ? "0.95rem" : "1.05rem",
+                    maxWidth: isMobile ? "100%" : 520,
+                  }}
+                >
                   {t(`home.narrative.slides.${SLIDES[active].key}.text`)}
                 </p>
               </div>
 
-              {/* RIGHT VISUAL (ABSTRACT PLACEHOLDER) */}
-              <div style={styles.visual}>
+              {/* RIGHT VISUAL */}
+              <div
+                style={{
+                  ...styles.visual,
+                  height: isMobile ? 240 : 360,
+                  marginTop: isMobile ? 24 : 0,
+                }}
+              >
                 <motion.div
-                  style={styles.visualCircle}
+                  style={{
+                    ...styles.visualCircle,
+                    width: isMobile ? 240 : 360,
+                    height: isMobile ? 240 : 360,
+                  }}
                   animate={{ rotate: 360 }}
                   transition={{
                     duration: 40,
@@ -88,7 +147,13 @@ const SlideshowNarrativeSection = () => {
                     ease: "linear",
                   }}
                 />
-                <div style={styles.visualInner}>
+                <div
+                  style={{
+                    ...styles.visualInner,
+                    width: isMobile ? 160 : 240,
+                    height: isMobile ? 160 : 240,
+                  }}
+                >
                   <span style={styles.visualLabel}>
                     {t(`home.narrative.slides.${SLIDES[active].key}.label`)}
                   </span>
@@ -99,7 +164,12 @@ const SlideshowNarrativeSection = () => {
         </div>
 
         {/* CONTROLS */}
-        <div style={styles.controls}>
+        <div
+          style={{
+            ...styles.controls,
+            marginTop: isMobile ? 40 : 60,
+          }}
+        >
           {SLIDES.map((_, i) => (
             <button
               key={i}
@@ -128,7 +198,6 @@ export default SlideshowNarrativeSection;
 const styles = {
   wrapper: {
     position: "relative",
-    padding: "160px 0",
     background: "#ffffff",
     overflow: "hidden",
   },
@@ -144,14 +213,12 @@ const styles = {
   container: {
     maxWidth: 1200,
     margin: "0 auto",
-    padding: "0 48px",
     position: "relative",
     zIndex: 2,
   },
 
   header: {
     maxWidth: 640,
-    marginBottom: 80,
   },
 
   eyebrow: {
@@ -173,7 +240,6 @@ const styles = {
   dot: { fontSize: "0.5rem", color: "#78c29a" },
 
   title: {
-    fontSize: "clamp(2.4rem,4.5vw,3.8rem)",
     fontWeight: 900,
     lineHeight: 1.1,
     color: "#0d2817",
@@ -191,12 +257,13 @@ const styles = {
 
   slide: {
     display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: 80,
     alignItems: "center",
   },
 
-  textBlock: {},
+  textBlock: {
+    display: "flex",
+    flexDirection: "column",
+  },
 
   step: {
     fontSize: "0.75rem",
@@ -207,17 +274,14 @@ const styles = {
   },
 
   slideTitle: {
-    fontSize: "2.2rem",
     fontWeight: 800,
     margin: "18px 0",
     color: "#0d2817",
   },
 
   slideText: {
-    fontSize: "1.05rem",
     lineHeight: 1.75,
     color: "#3f5f4f",
-    maxWidth: 520,
   },
 
   visual: {
@@ -225,20 +289,15 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: 360,
   },
 
   visualCircle: {
     position: "absolute",
-    width: 360,
-    height: 360,
     borderRadius: "50%",
     border: "2px dashed rgba(60,139,101,0.25)",
   },
 
   visualInner: {
-    width: 240,
-    height: 240,
     borderRadius: "50%",
     background: "linear-gradient(135deg,#e6f4ec,#d8efe3,#c6e7d6)",
     display: "flex",
@@ -252,13 +311,13 @@ const styles = {
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     color: "#0d2817",
+    fontSize: "0.75rem",
   },
 
   controls: {
     display: "flex",
     gap: 12,
     justifyContent: "center",
-    marginTop: 60,
   },
 
   dotBtn: {

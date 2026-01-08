@@ -7,7 +7,6 @@ import {
   Facebook,
   Instagram,
   Youtube,
-  Heart,
 } from "lucide-react";
 
 /* =========================================================
@@ -20,9 +19,43 @@ const Footer = () => {
   const contacts = t("business.contacts", { returnObjects: true }) || {};
   const regions = contacts.regions ? Object.values(contacts.regions) : [];
 
+  const getRegionStyle = (index) => {
+    if (index === 0) {
+      // SAFFRON
+      return {
+        background: "linear-gradient(180deg, #ffedd5 0%, #fed7aa 100%)",
+        border: "1px solid rgba(234,88,12,0.35)",
+      };
+    }
+
+    if (index === 1) {
+      // WHITE
+      return {
+        background: "linear-gradient(180deg, #ffffff 0%, #f9fafb 100%)",
+        border: "1px solid rgba(30,58,138,0.2)",
+      };
+    }
+
+    if (index === 2) {
+      // GREEN
+      return {
+        background: "linear-gradient(180deg, #dcfce7 0%, #bbf7d0 100%)",
+        border: "1px solid rgba(22,163,74,0.35)",
+      };
+    }
+
+    return {};
+  };
+
+  const getTextColor = (index) => {
+    if (index === 0) return "#7c2d12";
+    if (index === 1) return "#1e293b";
+    if (index === 2) return "#14532d";
+    return "#1f3d2b";
+  };
+
   return (
     <footer style={styles.footer}>
-      {/* Background */}
       <div style={styles.bgPattern} />
       <div style={styles.bgOverlay} />
 
@@ -43,7 +76,7 @@ const Footer = () => {
           </div>
 
           <p style={styles.tagline}>
-            Premium millets and natural foods from Araku Valley’s tribal farmers
+            Premium millets and natural foods from Araku Valley’s farmers
           </p>
 
           <div style={styles.badge}>
@@ -62,23 +95,72 @@ const Footer = () => {
           style={styles.contactGrid}
         >
           {regions.map((region, i) => (
-            <div key={i} style={styles.regionBlock}>
-              <div style={styles.regionHeader}>
-                <MapPin size={16} style={styles.regionIcon} />
-                <span style={styles.regionLabel}>{region.title}</span>
+            <div
+              key={i}
+              style={{
+                ...styles.regionBlock,
+                ...getRegionStyle(i),
+                position: "relative",
+              }}
+            >
+              {/* ASHOKA CHAKRA (WHITE BLOCK ONLY) */}
+              {i === 1 && (
+                <svg viewBox="0 0 200 200" style={styles.chakra}>
+                  <circle
+                    cx="100"
+                    cy="100"
+                    r="70"
+                    fill="none"
+                    stroke="#1e3a8a"
+                    strokeWidth="3"
+                  />
+                  {Array.from({ length: 24 }).map((_, idx) => (
+                    <line
+                      key={idx}
+                      x1="100"
+                      y1="30"
+                      x2="100"
+                      y2="170"
+                      stroke="#1e3a8a"
+                      strokeWidth="2"
+                      transform={`rotate(${idx * 15} 100 100)`}
+                    />
+                  ))}
+                </svg>
+              )}
+
+              <div style={{ ...styles.regionHeader, zIndex: 1 }}>
+                <MapPin size={16} style={{ color: getTextColor(i) }} />
+                <span
+                  style={{
+                    ...styles.regionLabel,
+                    color: getTextColor(i),
+                  }}
+                >
+                  {region.title}
+                </span>
               </div>
 
-              <div style={styles.regionPeople}>
+              <div style={{ ...styles.regionPeople, zIndex: 1 }}>
                 {region.people.map((entry, idx) => {
                   const [name, phone] = entry.split("–").map((s) => s.trim());
 
                   return (
                     <div key={idx} style={styles.contactItem}>
-                      <span style={styles.contactText}>{name}</span>
+                      <span
+                        style={{
+                          ...styles.contactText,
+                          color: getTextColor(i),
+                        }}
+                      >
+                        {name}
+                      </span>
                       <a
                         href={`tel:${phone}`}
-                        style={styles.contactPhone}
-                        aria-label={`Call ${name}`}
+                        style={{
+                          ...styles.contactPhone,
+                          color: getTextColor(i),
+                        }}
                       >
                         <Phone size={14} />
                         {phone}
@@ -104,16 +186,19 @@ const Footer = () => {
           <div style={styles.socialLinks}>
             <SocialLink
               href="https://www.facebook.com/people/AT-Millets-Araku-Naturals/61585507244152/"
+              style={styles.facebook}
               icon={<Facebook size={22} />}
               label="Facebook"
             />
             <SocialLink
               href="https://instagram.com/atmillets"
+              style={styles.instagram}
               icon={<Instagram size={22} />}
               label="Instagram"
             />
             <SocialLink
               href="https://www.youtube.com/@ATMilletsArakuNaturals"
+              style={styles.youtube}
               icon={<Youtube size={22} />}
               label="YouTube"
             />
@@ -121,26 +206,11 @@ const Footer = () => {
         </motion.div>
       </div>
 
-      {/* BOTTOM BAR */}
       <div style={styles.bottomBar}>
         <p style={styles.copyright}>
           © {new Date().getFullYear()} AT Millets Araku Naturals Pvt. Ltd. All
           rights reserved.
         </p>
-
-        {/*<div style={styles.madeWith}>
-          <span style={styles.madeWithText}>Made with</span>
-          <Heart size={14} fill="#ef4444" />
-          <span style={styles.madeWithText}>by</span>
-          <a
-            href="https://kernn.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={styles.kernLink}
-          >
-            Kernn Automations
-          </a>
-        </div>*/}
       </div>
     </footer>
   );
@@ -150,12 +220,12 @@ export default Footer;
 
 /* ---------------- SOCIAL BUTTON ---------------- */
 
-const SocialLink = ({ href, icon, label }) => (
+const SocialLink = ({ href, icon, label, style }) => (
   <motion.a
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    style={styles.socialButton}
+    style={{ ...styles.socialButton, ...style }}
     whileHover={{ scale: 1.1, y: -4 }}
     whileTap={{ scale: 0.95 }}
     aria-label={label}
@@ -171,7 +241,7 @@ const SocialLink = ({ href, icon, label }) => (
 const styles = {
   footer: {
     position: "relative",
-    background: "linear-gradient(180deg,#ffffff 0%,#f8fcfa 50%,#f0faf5 100%)",
+    background: "linear-gradient(180deg,#ffffff 0%,#f8fcfa 100%)",
     borderTop: "2px solid rgba(60,139,101,0.12)",
     overflow: "hidden",
   },
@@ -186,8 +256,6 @@ const styles = {
   bgOverlay: {
     position: "absolute",
     inset: 0,
-    backgroundImage:
-      "repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(60,139,101,0.02) 2px, rgba(60,139,101,0.02) 4px)",
   },
 
   container: {
@@ -203,7 +271,6 @@ const styles = {
     zIndex: 1,
   },
 
-  /* BRAND */
   brandSection: { maxWidth: 640 },
 
   brandHeader: {
@@ -222,7 +289,6 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    boxShadow: "0 12px 40px rgba(60,139,101,0.3)",
   },
 
   leafIcon: { color: "#fff" },
@@ -237,18 +303,14 @@ const styles = {
 
   tagline: {
     fontSize: "1.1rem",
-    lineHeight: 1.7,
     color: "#3f5f4f",
-    marginBottom: 24,
   },
 
   badge: {
+    marginTop: 20,
     padding: "12px 28px",
     borderRadius: 50,
-    background:
-      "linear-gradient(135deg, rgba(60,139,101,0.08), rgba(120,194,154,0.12))",
     border: "1.5px solid rgba(60,139,101,0.2)",
-    display: "inline-block",
   },
 
   badgeText: {
@@ -259,7 +321,6 @@ const styles = {
     color: "#3c8b65",
   },
 
-  /* CONTACTS */
   contactGrid: {
     display: "grid",
     gap: 24,
@@ -270,9 +331,18 @@ const styles = {
   regionBlock: {
     padding: 20,
     borderRadius: 18,
-    background: "rgba(255,255,255,0.7)",
-    border: "1px solid rgba(60,139,101,0.15)",
-    backdropFilter: "blur(10px)",
+    backdropFilter: "blur(8px)",
+    overflow: "hidden",
+  },
+
+  chakra: {
+    position: "absolute",
+    inset: 0,
+    margin: "auto",
+    width: 180,
+    height: 180,
+    opacity: 0.06,
+    pointerEvents: "none",
   },
 
   regionHeader: {
@@ -283,14 +353,11 @@ const styles = {
     justifyContent: "center",
   },
 
-  regionIcon: { color: "#3c8b65" },
-
   regionLabel: {
     fontSize: "0.8rem",
     fontWeight: 800,
     letterSpacing: "0.1em",
     textTransform: "uppercase",
-    color: "#166534",
   },
 
   regionPeople: {
@@ -308,7 +375,6 @@ const styles = {
 
   contactText: {
     fontSize: "0.95rem",
-    color: "#1f3d2b",
     fontWeight: 500,
   },
 
@@ -318,11 +384,9 @@ const styles = {
     gap: 6,
     fontSize: "0.9rem",
     fontWeight: 700,
-    color: "#15803d",
     textDecoration: "none",
   },
 
-  /* SOCIAL */
   socialSection: { maxWidth: 500, width: "100%" },
 
   socialTitle: {
@@ -342,41 +406,32 @@ const styles = {
     width: 56,
     height: 56,
     borderRadius: "50%",
-    background: "linear-gradient(135deg,#3c8b65,#2d7a54)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     color: "#fff",
-    boxShadow: "0 8px 24px rgba(60,139,101,0.3)",
   },
 
-  /* BOTTOM */
+  facebook: {
+    background: "#1877F2",
+  },
+
+  instagram: {
+    background: "linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4)",
+  },
+
+  youtube: {
+    background: "#FF0000",
+  },
+
   bottomBar: {
     borderTop: "1px solid rgba(60,139,101,0.15)",
     padding: "24px 32px",
-    display: "flex",
-    flexDirection: "column",
-    gap: 8,
-    alignItems: "center",
+    textAlign: "center",
   },
 
   copyright: {
     fontSize: "0.85rem",
     color: "#5f8f75",
-  },
-
-  madeWith: {
-    display: "flex",
-    alignItems: "center",
-    gap: 6,
-    fontSize: "0.85rem",
-  },
-
-  madeWithText: { color: "#5f8f75" },
-
-  kernLink: {
-    fontWeight: 700,
-    color: "#0d2817",
-    textDecoration: "none",
   },
 };

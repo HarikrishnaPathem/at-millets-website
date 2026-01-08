@@ -13,7 +13,7 @@ const BusinessHero = () => {
     t("business.hero.highlights", { returnObjects: true }) || [];
 
   return (
-    <section style={styles.wrapper}>
+    <section style={styles.wrapper} data-dark>
       {/* Background */}
       <motion.div
         style={styles.bgWrapper}
