@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp, FaFilePdf } from "react-icons/fa";
 
 const messages = [
   "👋 Need help? Chat with us!",
@@ -51,6 +51,8 @@ const WhatsAppFloat = () => {
   const message = encodeURIComponent("Hi");
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
+  const brochureUrl = "https://cdn.atmillets.com/media/brochure/brochure.pdf";
+
   const [showPopup, setShowPopup] = useState(true);
   const [popupText, setPopupText] = useState("👋 Hello! Click here to chat");
 
@@ -81,6 +83,16 @@ const WhatsAppFloat = () => {
     <>
       {/* Popup */}
       {showPopup && <div style={styles.popup}>{popupText}</div>}
+      {/* Brochure Button */}
+      <a
+        href={brochureUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="View Brochure"
+        style={styles.brochureButton}
+      >
+        <FaFilePdf style={styles.brochureIcon} />
+      </a>
 
       {/* WhatsApp Button */}
       <a
@@ -145,10 +157,33 @@ const styles = {
     color: "#ffffff",
     fontSize: "32px",
   },
+  brochureButton: {
+    position: "fixed",
+    bottom: "96px", // sits above WhatsApp button
+    right: "24px",
+    width: "52px",
+    height: "52px",
+    borderRadius: "50%",
+    backgroundColor: "#E53935", // PDF red
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 9999,
+    cursor: "pointer",
+    textDecoration: "none",
+    boxShadow: "0 6px 18px rgba(0,0,0,0.2)",
+    transition: "transform 0.2s ease",
+  },
+
+  brochureIcon: {
+    color: "#ffffff",
+    fontSize: "26px",
+  },
+
   popup: {
     position: "fixed",
-    bottom: "96px",
-    right: "24px",
+    bottom: "38px",
+    right: "96px",
     backgroundColor: "#ffffff",
     color: "#1a1a1a",
     padding: "10px 14px",
@@ -158,7 +193,12 @@ const styles = {
     boxShadow: "0 8px 24px rgba(0,0,0,0.15)",
     zIndex: 9999,
     animation: "slideFade 0.4s ease-out",
-    maxWidth: "220px",
+
+    /* 🔑 AUTO WIDTH MAGIC */
+    width: "fit-content",
+    maxWidth: "280px",
+    whiteSpace: "normal",
+    wordBreak: "break-word",
   },
 };
 
