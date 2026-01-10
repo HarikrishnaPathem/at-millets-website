@@ -2,41 +2,46 @@ import { motion, useInView } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import { useRef } from "react";
 import { useLanguage } from "../../i18n/LanguageContext";
+import heroVideoWebm from "../../assets/videos/hero-bg.webm";
+import { useNavigate } from "react-router-dom";
 
 // Mock Button component
-const Button = ({ children, size, variant, fullWidth }) => (
+const Button = ({ children, size, variant, fullWidth, onClick }) => (
   <button
+    onClick={onClick}
     style={{
       padding: size === "lg" ? "16px 40px" : "12px 28px",
       fontSize: size === "lg" ? "1.05rem" : "0.95rem",
       fontWeight: 600,
-      border: variant === "secondary" ? "2px solid #3c8b65" : "none",
+      border:
+        variant === "secondary" ? "2px solid rgba(255, 255, 255, 0.7)" : "none",
       background:
         variant === "secondary"
-          ? "transparent"
+          ? "rgba(15, 35, 28, 0.55)"
           : "linear-gradient(135deg, #3c8b65 0%, #2d7a54 100%)",
-      color: variant === "secondary" ? "#3c8b65" : "#fffef9",
+      color: variant === "secondary" ? "#ecfdf5" : "#fffef9",
       borderRadius: 12,
       cursor: "pointer",
       transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
       width: fullWidth ? "100%" : "auto",
+      backdropFilter: variant === "secondary" ? "blur(6px)" : "none",
       boxShadow:
         variant === "secondary"
-          ? "none"
+          ? "0 4px 16px rgba(0, 0, 0, 0.25)"
           : "0 4px 20px rgba(60, 139, 101, 0.25)",
     }}
     onMouseEnter={(e) => {
       e.target.style.transform = "translateY(-2px)";
       e.target.style.boxShadow =
         variant === "secondary"
-          ? "0 4px 16px rgba(60, 139, 101, 0.15)"
+          ? "0 8px 28px rgba(0, 0, 0, 0.35)"
           : "0 8px 30px rgba(60, 139, 101, 0.35)";
     }}
     onMouseLeave={(e) => {
       e.target.style.transform = "translateY(0)";
       e.target.style.boxShadow =
         variant === "secondary"
-          ? "none"
+          ? "0 4px 16px rgba(0, 0, 0, 0.25)"
           : "0 4px 20px rgba(60, 139, 101, 0.25)";
     }}
   >
@@ -53,15 +58,51 @@ const Button = ({ children, size, variant, fullWidth }) => (
 const HeroSection = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   return (
-    <section style={styles.wrapper}>
+    <section style={styles.wrapper} data-dark>
+      {/* ================= VIDEO BACKGROUND ================= */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
+      >
+        <source src={heroVideoWebm} type="video/webm" />
+      </video>
+      {/* Video overlay for contrast */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(180deg, rgba(10,18,16,0.45) 0%, rgba(10,18,16,0.25) 40%, rgba(10,18,16,0.15) 100%)",
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
+      />
+
       {/* Layered backgrounds */}
       <div style={styles.backgroundGradient} />
       <FloatingOrbs />
       <ParticleBackground />
 
-      {isMobile ? <MobileHero t={t} /> : <DesktopHero t={t} />}
+      {isMobile ? (
+        <MobileHero t={t} navigate={navigate} />
+      ) : (
+        <DesktopHero t={t} navigate={navigate} />
+      )}
 
       {/* Bottom wave decoration */}
       <div style={styles.waveDecor}>
@@ -176,7 +217,7 @@ const ParticleBackground = () => {
    DESKTOP home.hero
 ========================================================= */
 
-const DesktopHero = ({ t }) => {
+const DesktopHero = ({ t, navigate }) => {
   return (
     <motion.div
       style={styles.desktopContent}
@@ -235,8 +276,14 @@ const DesktopHero = ({ t }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.9, duration: 0.8 }}
       >
-        <Button size="lg">{t("home.hero.actions.explore")}</Button>
-        <Button size="lg" variant="secondary">
+        <Button size="lg" onClick={() => navigate("/products")}>
+          {t("home.hero.actions.explore")}
+        </Button>
+        <Button
+          size="lg"
+          variant="secondary"
+          onClick={() => navigate("/franchise")}
+        >
           {t("home.hero.actions.partner")}
         </Button>
       </motion.div>
@@ -248,7 +295,7 @@ const DesktopHero = ({ t }) => {
    MOBILE home.hero
 ========================================================= */
 
-const MobileHero = ({ t }) => {
+const MobileHero = ({ t, navigate }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
 
@@ -307,8 +354,14 @@ const MobileHero = ({ t }) => {
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: 0.8, duration: 0.7 }}
       >
-        <Button fullWidth>{t("home.hero.actions.explore")}</Button>
-        <Button fullWidth variant="secondary">
+        <Button fullWidth onClick={() => navigate("/products")}>
+          {t("home.hero.actions.explore")}
+        </Button>
+        <Button
+          fullWidth
+          onClick={() => navigate("/franchise")}
+          variant="secondary"
+        >
           {t("home.hero.actions.partner")}
         </Button>
       </motion.div>
@@ -373,7 +426,7 @@ const styles = {
     position: "absolute",
     inset: 0,
     pointerEvents: "none",
-    zIndex: 0,
+    zIndex: 2,
   },
 
   orb: {
@@ -441,17 +494,18 @@ const styles = {
     fontSize: "0.7rem",
     letterSpacing: "0.25em",
     textTransform: "uppercase",
-    color: "#3c8b65",
-    fontWeight: 600,
+    color: "#b7f3d0", // lighter mint
+    fontWeight: 700,
     marginBottom: 24,
     padding: "8px 20px",
-    background: "rgba(60, 139, 101, 0.08)",
+    background: "rgba(15, 35, 28, 0.45)", // darker glass
     borderRadius: 50,
-    border: "1px solid rgba(60, 139, 101, 0.15)",
+    border: "1px solid rgba(120, 194, 154, 0.35)",
+    backdropFilter: "blur(6px)",
   },
 
   eyebrowDot: {
-    color: "#78c29a",
+    color: "#86efac", // soft neon mint
     fontSize: "0.5rem",
   },
 
@@ -459,16 +513,17 @@ const styles = {
     fontSize: "clamp(3.2rem, 5.5vw, 6rem)",
     fontWeight: 900,
     lineHeight: 1.08,
-    color: "#0d2817",
+    color: "#f0fdf7", // soft white
     marginBottom: 28,
     letterSpacing: "-0.02em",
+    textShadow: "0 6px 30px rgba(0,0,0,0.55)", // subtle depth
   },
 
   titleAccent: {
     position: "relative",
     display: "inline-block",
     background:
-      "linear-gradient(135deg, #2d7a54 0%, #3c8b65 50%, #78c29a 100%)",
+      "linear-gradient(135deg, #bbf7d0 0%, #4ade80 45%, #22c55e 100%)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
     backgroundClip: "text",
@@ -481,7 +536,7 @@ const styles = {
     right: 0,
     height: 6,
     background:
-      "linear-gradient(90deg, rgba(120, 194, 154, 0.3), rgba(60, 139, 101, 0.2))",
+      "linear-gradient(90deg, rgba(134, 239, 172, 0.45), rgba(34, 197, 94, 0.35))",
     borderRadius: 3,
     zIndex: -1,
   },
@@ -490,9 +545,10 @@ const styles = {
     maxWidth: 600,
     fontSize: "1.15rem",
     lineHeight: 1.8,
-    color: "#3f5f4f",
+    color: "rgba(236, 253, 245, 0.9)", // soft sage-white
     marginBottom: 52,
     fontWeight: 400,
+    textShadow: "0 3px 12px rgba(0,0,0,0.45)",
   },
 
   statsRow: {
@@ -553,13 +609,14 @@ const styles = {
     fontSize: "0.65rem",
     letterSpacing: "0.22em",
     textTransform: "uppercase",
-    color: "#3c8b65",
-    fontWeight: 600,
+    color: "#bbf7d0", // light mint
+    fontWeight: 700,
     marginBottom: 20,
     padding: "6px 16px",
-    background: "rgba(60, 139, 101, 0.08)",
+    background: "rgba(15, 35, 28, 0.5)", // dark glass
     borderRadius: 50,
-    border: "1px solid rgba(60, 139, 101, 0.15)",
+    border: "1px solid rgba(134, 239, 172, 0.35)",
+    backdropFilter: "blur(6px)",
   },
 
   mobileTitle: {
@@ -567,16 +624,18 @@ const styles = {
     fontWeight: 900,
     lineHeight: 1.12,
     marginBottom: 20,
-    color: "#0d2817",
+    color: "#f0fdf7", // soft white
     letterSpacing: "-0.02em",
+    textShadow: "0 4px 22px rgba(0, 0, 0, 0.55)",
   },
 
   mobileSubtitle: {
     fontSize: "1rem",
     lineHeight: 1.7,
-    color: "#4f6f5f",
+    color: "rgba(236, 253, 245, 0.9)", // sage-white
     marginBottom: 40,
     fontWeight: 400,
+    textShadow: "0 2px 10px rgba(0, 0, 0, 0.45)",
   },
 
   mobileStats: {
