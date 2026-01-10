@@ -13,7 +13,7 @@ import amara from "../../assets/images/founders/amara.jpeg";
 const leadersData = [
   {
     name: "Krishna Urugonda",
-    designation: "Founder",
+    designation: "Managing Director",
     photo: krishna,
     bio: "Urugonda Krishna is an entrepreneur actively engaged in manufacturing and trading, with business interests spanning iron and steel products, B.G.I Manufacturing Private Limited, BGI Millets, and other essential goods. Through consistent effort, discipline, and a strong commitment to quality, he has successfully built and managed his enterprises while delivering reliable products and services to customers. Beyond his professional pursuits, he is deeply committed to social service and community welfare. He actively supports orphan homes and individuals in need by regularly providing food, vegetables, rice, and other essential supplies, benefiting nearly 100 people every day. Notably, during challenging periods such as the COVID-19 pandemic, he continued these humanitarian efforts using his own resources, without expectation of recognition or return. He attributes much of his strength and progress to the unwavering support of his life partner and family, whose encouragement has played a vital role in his personal and professional journey. Guided by values of integrity, responsibility, and compassion, he remains dedicated to expanding both his business initiatives and his efforts to serve society.",
   },
