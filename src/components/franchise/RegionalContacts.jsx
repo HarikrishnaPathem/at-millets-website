@@ -146,7 +146,13 @@ const RegionalContacts = () => {
 
               <ul style={styles.list}>
                 {region.people.map((entry, idx) => {
-                  const [name, phone] = entry.split("–").map((s) => s.trim());
+                  const [namePart, phonePart] = entry
+                    .split("–")
+                    .map((s) => s.trim());
+
+                  const phones = phonePart
+                    ? phonePart.split(",").map((p) => p.trim())
+                    : [];
 
                   return (
                     <li key={idx} style={styles.person}>
@@ -156,19 +162,24 @@ const RegionalContacts = () => {
                           color: colors.name,
                         }}
                       >
-                        {name}
+                        {namePart}
                       </span>
 
-                      <a
-                        href={`tel:${phone}`}
-                        style={{
-                          ...styles.phone,
-                          color: colors.phone,
-                        }}
-                        aria-label={`Call ${name}`}
-                      >
-                        {phone}
-                      </a>
+                      <div style={styles.phoneGroup}>
+                        {phones.map((phone, pIdx) => (
+                          <a
+                            key={pIdx}
+                            href={`tel:${phone}`}
+                            style={{
+                              ...styles.phone,
+                              color: colors.phone,
+                            }}
+                            aria-label={`Call ${namePart}`}
+                          >
+                            {phone}
+                          </a>
+                        ))}
+                      </div>
                     </li>
                   );
                 })}
@@ -273,5 +284,11 @@ const styles = {
     fontWeight: 700,
     textDecoration: "none",
     whiteSpace: "nowrap",
+  },
+  phoneGroup: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-end",
+    gap: 4,
   },
 };

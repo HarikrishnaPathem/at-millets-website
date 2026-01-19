@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 
 import { useLanguage } from "../../i18n/LanguageContext";
+import PartnerWithUsForm from "../PartnerWithUsForm";
 
 const Header = () => {
   const { lang, setLang, t } = useLanguage();
@@ -31,13 +32,18 @@ const Header = () => {
 
   const [onDarkBg, setOnDarkBg] = useState(false);
   const [isHomePage, setIsHomePage] = useState(true);
+  const [partnerOpen, setPartnerOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = partnerOpen ? "hidden" : "";
+  }, [partnerOpen]);
 
   // Check if current page is home
   useEffect(() => {
     const checkHomePage = () => {
       setIsHomePage(
         window.location.pathname === "/" ||
-          window.location.pathname === "/index.html"
+          window.location.pathname === "/index.html",
       );
     };
 
@@ -86,7 +92,7 @@ const Header = () => {
       {
         rootMargin: "-80px 0px -60% 0px",
         threshold: 0.15,
-      }
+      },
     );
 
     darkSections.forEach((section) => observer.observe(section));
@@ -310,6 +316,21 @@ const Header = () => {
               </div>
             )}
 
+            {/* PARTNER WITH US – DESKTOP */}
+            {isDesktop && (
+              <button
+                onClick={() => setPartnerOpen(true)}
+                style={{
+                  ...styles.partnerButton,
+                  color: headerTheme.text,
+                  border: `1px solid ${headerTheme.border}`,
+                }}
+              >
+                <Handshake size={16} />
+                <span>{t("nav.partner") || "Partner With Us"}</span>
+              </button>
+            )}
+
             {/* MOBILE TOGGLE */}
             {isMobile && (
               <button
@@ -366,6 +387,18 @@ const Header = () => {
                 </a>
               </div>
             )}
+            <div style={styles.mobileSection}>
+              <button
+                style={styles.mobilePartnerButton}
+                onClick={() => {
+                  setPartnerOpen(true);
+                  setMobileOpen(false);
+                }}
+              >
+                <Handshake size={16} />
+                {t("nav.partner") || "Partner With Us"}
+              </button>
+            </div>
 
             {Object.values(navigationData).map((section) => (
               <div key={section.label} style={styles.mobileSection}>
@@ -382,6 +415,40 @@ const Header = () => {
                 ))}
               </div>
             ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {partnerOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={styles.modalOverlay}
+            onClick={() => setPartnerOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              style={styles.modal}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* MODAL HEADER */}
+              <div style={styles.modalHeader}>
+                <h3>Partner With Us</h3>
+                <button
+                  onClick={() => setPartnerOpen(false)}
+                  style={styles.modalClose}
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {/* FORM GOES HERE */}
+              <PartnerWithUsForm onSuccess={() => setPartnerOpen(false)} />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -591,6 +658,60 @@ const styles = {
     textDecoration: "none",
     color: "#2f2f2f",
     fontWeight: 500,
+  },
+  partnerButton: {
+    display: "flex",
+    gap: 6,
+    alignItems: "center",
+    padding: "6px 14px",
+    borderRadius: 12,
+    background: "linear-gradient(135deg,#2f6f4e,#3c8b65)",
+    color: "#fff",
+    fontWeight: 700,
+    cursor: "pointer",
+  },
+
+  mobilePartnerButton: {
+    width: "100%",
+    display: "flex",
+    gap: 8,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "10px",
+    borderRadius: 12,
+    background: "linear-gradient(135deg,#2f6f4e,#3c8b65)",
+    color: "#fff",
+    fontWeight: 700,
+    border: "none",
+  },
+
+  modalOverlay: {
+    position: "fixed",
+    inset: 0,
+    background: "rgba(0,0,0,0.55)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 2000,
+  },
+
+  modal: {
+    background: "#fff",
+    borderRadius: 18,
+    width: "min(92vw, 460px)",
+    padding: 20,
+  },
+
+  modalHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+
+  modalClose: {
+    background: "transparent",
+    border: "none",
+    cursor: "pointer",
   },
 };
 

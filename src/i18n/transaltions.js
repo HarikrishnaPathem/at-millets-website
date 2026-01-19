@@ -637,7 +637,7 @@ export const translations = {
             title: "Telangana",
             people: [
               "Krishna– 9885558222",
-              "Kavitha– 8897265146",
+              "Kavitha Gandhi Vanguri – 8897265146,7386922036",
               "Raghuram– 9989807740",
             ],
           },

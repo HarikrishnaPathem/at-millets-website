@@ -145,7 +145,13 @@ const Footer = () => {
 
               <div style={{ ...styles.regionPeople, zIndex: 1 }}>
                 {region.people.map((entry, idx) => {
-                  const [name, phone] = entry.split("–").map((s) => s.trim());
+                  const [namePart, phonePart] = entry
+                    .split("–")
+                    .map((s) => s.trim());
+
+                  const phones = phonePart
+                    ? phonePart.split(",").map((p) => p.trim())
+                    : [];
 
                   return (
                     <div key={idx} style={styles.contactItem}>
@@ -155,18 +161,23 @@ const Footer = () => {
                           color: getTextColor(i),
                         }}
                       >
-                        {name}
+                        {namePart}
                       </span>
-                      <a
-                        href={`tel:${phone}`}
-                        style={{
-                          ...styles.contactPhone,
-                          color: getTextColor(i),
-                        }}
-                      >
-                        <Phone size={14} />
-                        {phone}
-                      </a>
+                      <div style={styles.phoneGroup}>
+                        {phones.map((phone, pIdx) => (
+                          <a
+                            key={pIdx}
+                            href={`tel:${phone}`}
+                            style={{
+                              ...styles.phone,
+                              color: getTextColor(i),
+                            }}
+                            aria-label={`Call ${namePart}`}
+                          >
+                            {phone}
+                          </a>
+                        ))}
+                      </div>
                     </div>
                   );
                 })}
@@ -224,6 +235,18 @@ const Footer = () => {
         <p style={styles.copyright}>
           © {new Date().getFullYear()} AT Millets Araku Naturals Pvt. Ltd. All
           rights reserved.
+          {" "}|{" "}
+    <span>
+      Powered by{" "}
+      <a
+        href="https://kernn.ai"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={styles.kernnLink}
+      >
+        Kernn Automations
+      </a>
+    </span>
         </p>
       </div>
     </footer>
@@ -259,6 +282,16 @@ const styles = {
     borderTop: "2px solid rgba(60,139,101,0.12)",
     overflow: "hidden",
   },
+  kernnLink: {
+  color: "#a92427",
+  textDecoration: "none",
+  fontWeight: 500,
+  transition: "opacity 0.3s ease",
+},
+kernnLinkHover: {
+  opacity: 0.8,
+},
+
 
   bgPattern: {
     position: "absolute",
@@ -455,5 +488,11 @@ const styles = {
   copyright: {
     fontSize: "0.85rem",
     color: "#5f8f75",
+  },
+  phoneGroup: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-end",
+    gap: 4,
   },
 };
